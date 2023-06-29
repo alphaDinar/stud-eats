@@ -1,0 +1,121 @@
+.intro_box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.intro_box h4 {
+  font-size: 2rem;
+}
+
+.intro_box span {
+  font-size: 1.3rem;
+}
+
+.intro_box img {
+  width: 80px;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+}
+
+.category_box {
+  min-height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.category_box .category {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  align-items: center;
+  justify-content: center;
+  background: dodgerblue;
+  color: white;
+}
+
+.category_box .category img {
+  width: 70%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+}
+
+.meal_box {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.meal {
+  width: 90%;
+  border-radius: 10px;
+  background: var(--var-theme);
+  padding: 15px 5%;
+  display: flex;
+  align-items: center;
+  gap: 0 1rem;
+  color: white;
+}
+
+.meal p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem 0;
+}
+
+.meal p small {
+  display: flex;
+  align-items: center;
+}
+
+.meal img {
+  width: 100px;
+}
+
+.vendor_box,
+.popular_box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 10px 0;
+}
+
+.vendors {
+  width: 100%;
+  display: flex;
+}
+
+.vendor {
+  min-height: 200px;
+  border-radius: 10px;
+  background: white;
+  border: 2px dotted var(--var-theme);
+}
+
+.vendor img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 10px 10px 0 0;
+  object-fit: contain;
+}
+
+.vendor p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  padding: 5px 5%;
+}
+
+.vendor p small,
+.popular p small {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  gap: 0 0.5rem;
+  color: rgb(11, 201, 106);
+}
