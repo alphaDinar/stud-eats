@@ -196,3 +196,34 @@
   justify-content: center;
   background: whitesmoke;
 }
+
+.now_category_box {
+  min-height: 5vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.now_category_box img {
+  height: 60px;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+}
+
+.now_category_box p {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  flex-direction: column;
+}
+
+.now_category_box p span {
+  font-size: 1.5rem;
+  color: rgb(91, 91, 91);
+  padding: 3px 0;
+}
+
+.now_category_box p i {
+  font-weight: 600;
+  color: salmon;
+}

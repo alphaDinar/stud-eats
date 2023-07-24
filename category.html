@@ -25,7 +25,7 @@
   <section class="page">
     <section class="page_cover" onclick="closeFilter()"></section>
     <nav class="top_nav">
-      <div >
+      <div>
         <a href="vendors.html" class="material-symbols-outlined">arrow_back</a>
         <img src="images/omar.png" alt="" onclick="openPanel()">
         <small onclick="openPanel()">Hi Omar</small>
@@ -73,38 +73,19 @@
         <h4>Hungry ?</h4>
         <span style="color: rgb(118, 118, 118);">Place An Order </span>
       </div>
-      <a href="vendor_profile.html" style="display: flex; align-items: center;">
-        <img src="images/flogo2.jpg" alt="">
-      </a>
+    </section>
+    <hr style="width: 100%; border-top: 2px solid darkgray;">
+    <section class="now_category_box">
+      <p>
+        <span>Beverages</span>
+        <i class="material-symbols-outlined">restaurant_menu</i>
+      </p>
+      <img src="images/beverage.png" alt="">
     </section>
 
     <section class="search_box">
       <input type="text" oninput="runFoodSearch(event.target.value.toLowerCase())">
       <i class="fa-solid fa-sliders" onclick="openFilter()"></i>
-    </section>
-
-    <section class="category_box swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="category">
-            <img src="images/beverage.png" alt="">
-            <span>Beverages</span>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="category">
-            <img src="images/baby1.png" alt="">
-            <span>Foods</span>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="category">
-            <img src="images/baby3.png" alt="">
-            <span>Meat</span>
-          </div>
-        </div>
-      </div>
-      </div>
     </section>
 
     <section class="food_small_box">
@@ -113,7 +94,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide food" data-name="burger" data-feature="beef" data-price="45">
             <div class="food_small">
-              <img src="images/burger_king.png" alt="">
+              <img src="images/sample.jpeg" alt="">
               <p>
                 <span>Burger</span>
                 <small style="color: darkgray;">Beef</small>
@@ -128,7 +109,7 @@
           </div>
           <div class="swiper-slide food" data-name="fries" data-feature="chicken" data-price="60">
             <div class="food_small">
-              <img src="images/french_fries.png" alt="">
+              <img src="images/sample.jpeg" alt="">
               <p>
                 <span>Fries</span>
                 <small style="color: darkgray;">Chicken</small>
@@ -143,44 +124,40 @@
           </div>
         </div>
       </section>
-    </section>
-
-    <p>Top Picks</p>
-    <section class="food_big_box swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide food" data-name="burger" data-feature="pork" data-price="65">
-          <div class="food_big">
-            <img src="images/burger.png" alt="">
-            <p>
-              <span>Ham Burger</span>
-              <small style="color: wheat;">Pork</small>
-              <span>GHS 65.00</span>
-            </p>
-            <nav>
-              <button class="material-symbols-outlined add_food" data-id="3" data-name="burger"
-                data-img_url="images/burger.png" data-feature="pork" data-price="65">add</button>
-              <button class="material-symbols-outlined rem_food" data-id="3">remove</button>
-            </nav>
-          </div>
-        </div>
-        <div class="swiper-slide food" data-name="french fries" data-feature="chicken" data-price="35">
-          <div class="food_big">
-            <img src="images/french_fries.png" alt="">
-            <p>
-              <span>French Fries</span>
-              <small style="color: wheat;">Chicken</small>
-              <span>GHS 35.00</span>
-            </p>
-            <nav>
+      <section class="food_smalls swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide food" data-name="burger" data-feature="beef" data-price="45">
+            <div class="food_small">
+              <img src="images/sample.jpeg" alt="">
+              <p>
+                <span>Burger</span>
+                <small style="color: darkgray;">Beef</small>
+                <span>GHS 45.00</span>
+              </p>
               <nav>
-                <button class="material-symbols-outlined add_food" data-id="4" data-name="french fries"
-                  data-img_url="images/french_fries.png" data-feature="chicken" data-price="35">add</button>
-                <button class="material-symbols-outlined rem_food" data-id="4">remove</button>
+                <button class="material-symbols-outlined add_food" data-id="1" data-name="burger"
+                  data-img_url="images/burger_king.png" data-feature="beef" data-price="45">add</button>
+                <button class="material-symbols-outlined rem_food" data-id="1">remove</button>
               </nav>
-            </nav>
+            </div>
+          </div>
+          <div class="swiper-slide food" data-name="fries" data-feature="chicken" data-price="60">
+            <div class="food_small">
+              <img src="images/sample.jpeg" alt="">
+              <p>
+                <span>Fries</span>
+                <small style="color: darkgray;">Chicken</small>
+                <span>GHS 60.00</span>
+              </p>
+              <nav>
+                <button class="material-symbols-outlined add_food" data-id="2" data-name="fries"
+                  data-img_url="images/french_fries.png" data-feature="chicken" data-price="60">add</button>
+                <button class="material-symbols-outlined rem_food" data-id="2">remove</button>
+              </nav>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </section>
   </section>
 
@@ -225,8 +202,8 @@
           runSearchAnime(food)
         })
         makeFoodSwipers()
-      }else{
-        foods.forEach(food=>{
+      } else {
+        foods.forEach(food => {
           food.style.display = 'block'
         })
         b_res_box.innerHTML = `${foods.length} Results`
