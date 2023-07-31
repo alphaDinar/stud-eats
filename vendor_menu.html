@@ -25,7 +25,7 @@
   <section class="page">
     <section class="page_cover" onclick="closeFilter()"></section>
     <nav class="top_nav">
-      <div >
+      <div>
         <a href="vendors.html" class="material-symbols-outlined">arrow_back</a>
         <img src="images/omar.png" alt="" onclick="openPanel()">
         <small onclick="openPanel()">Hi Omar</small>
@@ -225,8 +225,8 @@
           runSearchAnime(food)
         })
         makeFoodSwipers()
-      }else{
-        foods.forEach(food=>{
+      } else {
+        foods.forEach(food => {
           food.style.display = 'block'
         })
         b_res_box.innerHTML = `${foods.length} Results`
@@ -237,8 +237,9 @@
 
     runFoodSearch = (val) => {
       foods.forEach(food => {
-        if (food.dataset.name.includes(val) || food.dataset.feature.includes(val)) {
+        if (food.dataset.name.replace(/\s/g, "").includes(val) || food.dataset.feature.includes(val)) {
           food.style.display = 'block'
+        } else {
           food.style.display = 'none'
         }
         runSearchAnime(food)
@@ -271,7 +272,7 @@
             blackList.push(food_id)
             cart_json.push({ id: food_id, name: food_name, feature: food_feature, price: food_price, img_url: food_img_url, vendor: food_vendor, quantity: 1, extras: '' })
           }
-          sessionStorage.setItem('cart_json', JSON.stringify(cart_json))
+          localStorage.setItem('cart_json', JSON.stringify(cart_json))
           cartCounter(cart_json)
         }
       })
@@ -296,7 +297,7 @@
               }
             })
           }
-          sessionStorage.setItem('cart_json', JSON.stringify(cart_json))
+          localStorage.setItem('cart_json', JSON.stringify(cart_json))
           cartCounter(cart_json)
         }
       })

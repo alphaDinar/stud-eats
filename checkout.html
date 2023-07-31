@@ -23,7 +23,7 @@
   <section class="page">
     <nav class="top_nav">
       <div>
-        <a href="vendor_menu.html" class="material-symbols-outlined">arrow_back</a>
+        <a href="cart.html" class="material-symbols-outlined">arrow_back</a>
       </div>
       <div>
         <i class="material-symbols-outlined">notifications</i>
@@ -33,59 +33,101 @@
         </a>
       </div>
     </nav>
-    <section class="cart_box">
+
+    <section class="checkout_box">
+      <section class="checkout_thumb swiper">
+        <div class="swiper-wrapper checkout_thumb_nest">
+          <div class="swiper-slide">
+            <div>
+              <img src="images/burger.png" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="checkout_swiper swiper">
+        <div class="swiper-wrapper checkout_swiper_nest">
+          <div class="swiper-slide">
+            <div>
+              <img src="images/burger.png" alt="">
+              <hr style="width: 80%; border-top: 2px dotted darkgray;">
+              <span>
+                <strong style="font-size: 1.3rem;">49</strong>
+                <small>pcs</small>
+              </span>
+              <hr style="width: 80%; border-top: 2px dotted darkgray;">
+              <p>
+                <span>Burger</span>
+                <small style="color: darkgray;">Chicken</small>
+                <strong>GHS 4,300</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
 
     <style>
-      .cart_box {
+      .checkout_box {
         width: 100%;
         display: flex;
-        flex-direction: column;
-        gap: 1.5rem 0;
+        gap: 0 5%;
+        border-bottom: 2px solid black;
       }
 
-      .cart_li {
-        width: 96%;
-        padding: 8px 2%;
+      .checkout_thumb {
+        width: 25%;
+        height: 50vh;
+      }
+
+      .checkout_thumb .swiper-slide {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        border-radius: 0 20px 0 20px;
-        box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+        justify-content: center;
+      }
+      .checkout_thumb .swiper-slide div{
+        padding: 5px;
+        border-radius: 5px;
+        background: whitesmoke;
       }
 
-      .cart_li div {
-        display: flex;
-        gap: 0 5vw;
-      }
-
-      .cart_li img {
-        height: 55px;
+      .checkout_thumb .swiper-slide img {
+        height: 60px;
+        width: 60px;
         aspect-ratio: 4/3;
         object-fit: contain;
       }
 
-      .cart_li p {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .cart_li nav {
+      .checkout_swiper {
+        width: 70%;
         display: flex;
         align-items: center;
-        gap: 0 0.5rem;
+        justify-content: center;
       }
 
-      .cart_li nav button {
-        width: 30px;
-        height: 30px;
-        background: var(--var-theme);
-        color: white;
-        border: none;
-        border-radius: 5px;
+      .checkout_swiper .swiper-slide div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem 0;
+      }
+
+      .checkout_swiper img {
+        width: 100%;
+        height: 250px;
+        aspect-ratio: 4/3;
+        object-fit: contain;
+      }
+
+      .checkout_swiper p {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        flex-direction: column;
       }
     </style>
+
+
 
     <section class="sum_box">
       <nav onclick="toggleSumBox()">
@@ -156,7 +198,8 @@
         display: flex;
         justify-content: space-between;
       }
-      .sum_box div a{
+
+      .sum_box div a {
         padding: 10px;
         border-radius: 5px;
         background: var(--var-theme);
@@ -175,6 +218,7 @@
         left: 0px;
 
       }
+
       .sum_box div img:nth-child(2) {
         right: 0px;
       }
@@ -194,80 +238,65 @@
     const cart_box = document.querySelector('.cart_box')
     console.log(cart_box)
 
+    const checkout_thumb_nest = document.querySelector('.checkout_thumb_nest')
+    const checkout_swiper_nest = document.querySelector('.checkout_swiper_nest')
+
 
 
     fixCartState = () => {
       let cart_json = restoreCartState()[0]
       cart_json.forEach((el, i) => {
-        cart_box.innerHTML += `
-        <div class="cart_li" id="${el.id}">
+        checkout_thumb_nest.innerHTML += `
+        <div class="swiper-slide">
           <div>
             <img src="${el.img_url}" alt="">
-            <p>
-              <span>${el.name}</span>
-              <small style="color: darkgray;">${el.feature}</small>
-              <span>GHS ${el.price}</span>
-            </p>
+          </div>
         </div>
-        <nav>
-          <button class="material-symbols-outlined">remove</button>
-          <span>${el.quantity}</span>
-          <button class="material-symbols-outlined">add</button>
-        </nav>
-      </div>
         `
+        checkout_swiper_nest.innerHTML += `
+        <div class="swiper-slide">
+            <div>
+              <img src="${el.img_url}" alt="">
+              <hr style="width: 80%; border-top: 2px dotted darkgray;">
+              <span>
+                <strong style="font-size: 1.3rem;">${el.quantity}</strong>
+                <small>pcs</small>
+              </span>
+              <hr style="width: 80%; border-top: 2px dotted darkgray;">
+              <p>
+                <span>${el.name}</span>
+                <small style="color: darkgray;">${el.feature}</small>
+                <strong>GHS ${el.quantity * el.price}</strong>
+              </p>
+            </div>
+          </div>
+        `
+
       })
     }
     fixCartState()
 
+    makeCheckoutSwipers =()=>{
+      var checkout_thumb_swiper = new Swiper('.checkout_thumb',{
+        loop : true,
+        direction : 'vertical',
+        slidesPerView : 4
+      })
+
+      var checkout_swiper = new Swiper('.checkout_swiper', {
+        loop : true,
+        speed : 500,
+        thumbs: {
+        swiper: checkout_thumb_swiper,
+      },
+      })
+    }
+
+    makeCheckoutSwipers()
+
     let cart_json = restoreCartState()[0]
     const cart_lis = document.querySelectorAll('.cart_li')
 
-    manageCart = () => {
-      cart_lis.forEach(li => {
-        var li_rem = li.children[1].children[0]
-        var li_sum = li.children[1].children[1]
-        var li_add = li.children[1].children[2]
-
-        li_add.onclick = () => {
-          cart_json.forEach(el => {
-            if (li.id === el.id) {
-              el.quantity = el.quantity + 1
-              cartCounter(cart_json)
-              cartSum(cart_json)
-              li_sum.innerHTML = el.quantity
-              localStorage.setItem('cart_json', JSON.stringify(cart_json))
-            }
-          })
-        }
-        li_rem.onclick = () => {
-          cart_json.forEach(el => {
-            if (li.id === el.id) {
-              if (el.quantity === 1) {
-                cart_json.splice(cart_json.indexOf(el), 1)
-                anime({
-                  targets: li,
-                  duration: 500,
-                  translateX: [0, -100],
-                  opacity: [1, 0],
-                  easing: 'easeInOutExpo',
-                  complete: () => {
-                    li.remove()
-                  }
-                })
-              } else {
-                el.quantity = el.quantity - 1
-              }
-              cartCounter(cart_json)
-              cartSum(cart_json)
-              li_sum.innerHTML = el.quantity
-              localStorage.setItem('cart_json', JSON.stringify(cart_json))
-            }
-          })
-        }
-      })
-    }
-    manageCart()
 
     const sub_sum = document.getElementById('sub_sum')
     const delivery_sum = document.getElementById('delivery_sum')

@@ -11,8 +11,8 @@ cartCounter = (cart_json) => {
 restoreCartState = () => {
   let cart_json = []
   let blackList = []
-  if (sessionStorage.getItem('cart_json')) {
-    cart_json = JSON.parse(sessionStorage.getItem('cart_json'))
+  if (localStorage.getItem('cart_json')) {
+    cart_json = JSON.parse(localStorage.getItem('cart_json'))
     cart_json.forEach(el => {
       blackList.push(el.id)
     })

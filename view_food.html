@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/eb75260fb3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
+  <link rel="stylesheet" href="css/base.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="css/component.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="page">
+    <section class="page_cover" onclick="closeFilter()"></section>
+    <nav class="top_nav">
+      <div>
+        <a href="vendor_menu.html" class="material-symbols-outlined">arrow_back</a>
+        <img src="images/omar.png" alt="" onclick="openPanel()">
+        <small onclick="openPanel()">Hi Omar</small>
+      </div>
+      <div>
+        <i class="material-symbols-outlined">notifications</i>
+        <a href="cart.html" style="position: relative; display: flex; align-items: center;">
+          <i class="material-symbols-outlined">shopping_cart</i>
+          <small class="cart_counter">0</small>
+        </a>
+      </div>
+    </nav>
+
+    <nav class="user_panel">
+      <header>
+        <img src="images/omar.png" alt="" width="80px" style="aspect-ratio: 4/3; object-fit: contain;">
+        <span>Omar</span>
+      </header>
+      <section>
+        <a href=""><i class="material-symbols-outlined">restaurant</i> <span>My Orders</span></a>
+        <a href=""><i class="material-symbols-outlined">person</i> <span>My Profile</span></a>
+        <a href=""><i class="material-symbols-outlined">pin_drop</i> <span>Delivery Adderss</span></a>
+        <a href=""><i class="material-symbols-outlined">credit_card</i> <span>Payment Methods</span></a>
+        <a href=""><i class="material-symbols-outlined">call</i> <span>Contact Us</span></a>
+        <a href=""><i class="material-symbols-outlined">settings</i> <span>Settings</span></a>
+        <a href=""><i class="material-symbols-outlined">contact_support</i><span>Helps & FAQs</span></a>
+      </section>
+      <button class="material-symbols-outlined" onclick="closePanel()">close</button>
+    </nav>
+
+
+    <section class="food_box">
+
+
+      <style>
+        .food_box p {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+        }
+      </style>
+
+      <img src="images/burger-with-flying-elements_147620-1942.avif" alt="">
+      <!-- <hr style="width: 80%; border-top: 2px dotted darkgray;"> -->
+      <nav>
+        <button class="material-symbols-outlined add_food" data-id="4" data-name="french fries"
+        data-img_url="images/french_fries.png" data-feature="chicken" data-price="35">add</button>
+        <button class="quan_box">0</button>
+        <button class="material-symbols-outlined rem_food" data-id="4">remove</button>
+      </nav>
+      <hr style="width: 80%; border-top: 2px dotted darkgray;">
+
+      <p>
+        <span>French Fries</span>
+        <small style="color: wheat;">Chicken</small>
+        <span>GHS 35.00</span>
+      </p>
+
+      <hr style="width: 80%; border-top: 2px dotted darkgray;">
+
+      <p>
+        <small>Total</small>
+        <strong class="total_box" style="font-size: 1.3rem;">GHS 0</strong>
+      </p>
+    </section>
+
+    <style>
+      .food_box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+        gap: 2rem 0;
+      }
+
+      .food_box img {
+        width: 90%;
+        aspect-ratio: 4/3;
+        object-fit: contain;
+      }
+
+      .food_box nav {
+        display: flex;
+        gap: 0 1rem;
+      }
+
+      .food_box nav button {
+        height: 35px;
+        width: 35px;
+        background: var(--var-theme);
+        color: white;
+        border-radius: 5px;
+      }
+    </style>
+
+  </section>
+
+  <script src="js/index.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/vendor.js"></script>
+  <script>
+    const add_food = document.querySelector('.add_food')
+    const rem_food = document.querySelector('.rem_food')
+    var cart_json = restoreCartState()[0]
+    var blackList = restoreCartState()[1]
+
+    const quan_box = document.querySelector('.quan_box')
+    const total_box = document.querySelector('.total_box')
+
+    cart_json.forEach(el=>{
+      if(el.id === add_food.dataset.id){
+        quan_box.innerHTML = el.quantity
+        total_box.innerHTML = 'GHS' + ' ' + ((el.quantity) * add_food.dataset.price)
+      }
+    })
+
+    addToCart = () => {
+      add_food.onclick = () => {
+        var food_id = add_food.dataset.id
+        var food_name = add_food.dataset.name
+        var food_feature = add_food.dataset.feature
+        var food_price = add_food.dataset.price
+        var food_img_url = add_food.dataset.img_url
+        var food_vendor = add_food.dataset.vendor
+        if (blackList.includes(food_id)) {
+          cart_json.forEach(el => {
+            if (food_id === el.id) {
+              el.quantity = el.quantity + 1
+              quan_box.innerHTML = el.quantity 
+              total_box.innerHTML = 'GHS' + ' ' + ((el.quantity) * add_food.dataset.price)
+            }
+          })
+        } else {
+          blackList.push(food_id)
+          cart_json.push({ id: food_id, name: food_name, feature: food_feature, price: food_price, img_url: food_img_url, vendor: food_vendor, quantity: 1, extras: '' })
+          quan_box.innerHTML = 1
+          total_box.innerHTML = 'GHS' + ' ' + ((1) * add_food.dataset.price)
+        }
+        localStorage.setItem('cart_json', JSON.stringify(cart_json))
+        cartCounter(cart_json)
+      }
+    }
+    addToCart()
+
+    remFromCart = () => {
+      rem_food.onclick = () => {
+        var food_id = rem_food.dataset.id
+        if (blackList.includes(food_id)) {
+          cart_json.forEach(el => {
+            if (food_id === el.id) {
+              if (el.quantity > 1) {
+                el.quantity = el.quantity - 1
+                quan_box.innerHTML = el.quantity
+                total_box.innerHTML = 'GHS' + ' ' + ((el.quantity) * add_food.dataset.price)
+              }
+              else {
+                cart_json.splice(cart_json.indexOf(el), 1)
+                blackList.splice(blackList.indexOf(String(el.id)), 1)
+                quan_box.innerHTML = 0
+                total_box.innerHTML = 'GHS' + ' ' + ((0) * add_food.dataset.price)
+              }
+            }
+          })
+        }
+        localStorage.setItem('cart_json', JSON.stringify(cart_json))
+        cartCounter(cart_json)
+      }
+    }
+    remFromCart()
+  </script>
+</body>
+
+</html>
