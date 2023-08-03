@@ -40,7 +40,11 @@
         function (position) {
           var latitude = position.coords.latitude;
           var longitude = position.coords.longitude;
-          createMap(longitude, latitude)
+
+          start_coords = [-1.550235367897344, 6.67723899700621]
+          end_coords = [longitude, latitude]
+          var map = createMap(longitude, latitude)
+          getRoute(map, start_coords, end_coords);
         },
         function (error) {
           console.log("Error getting location: " + error.message);
@@ -101,18 +105,21 @@
       overflow: hidden;
       position: relative;
     }
-    .map_box nav{
+
+    .map_box nav {
       position: absolute;
       z-index: 100;
       display: flex;
       flex-direction: column;
     }
-    .map_box nav .price_box{
+
+    .map_box nav .price_box {
       background: var(--var-theme);
       padding: 8px 10px;
       color: white;
     }
-    .map_box nav .time_box{
+
+    .map_box nav .time_box {
       padding: 8px 10px;
       background: var(--var-theme);
       color: white;
@@ -163,17 +170,20 @@
     const time_box = document.querySelector('.time_box')
     const map_box_cover = document.querySelector('.map_box .cover')
 
-    createMap = (lon, lat) => {
+    createMap = () => {
       mapboxgl.accessToken = 'pk.eyJ1IjoiYWxwaGFkaW5hciIsImEiOiJjbDZteDV5aTIwN24yM2ZvZmw5MDczankxIn0.GcppD4tq-Ojc-5N4jVJ5SQ';
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [lon, lat],
+        center: [-1.550235367897344, 6.67723899700621], //vendor_location
         zoom: 10
       });
-      const start = [lon, lat];
+      const start = [-1.550235367897344, 6.67723899700621]; // vendor_location
       fixPoints(map, start)
+      return map
     }
+
+    // createMap()
 
     const getRoute = (map, start, end) => {
       map_box_cover.classList.add('change')
@@ -231,76 +241,81 @@
 
     const fixPoints = (map, start_coords) => {
       map.on('load', () => {
-        map.addLayer({
-          id: 'point',
-          type: 'circle',
-          source: {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [
-                {
-                  type: 'Feature',
-                  properties: {},
-                  geometry: {
-                    type: 'Point',
-                    coordinates: start_coords
-                  }
-                }
-              ]
-            }
-          },
-          paint: {
-            'circle-radius': 10,
-            'circle-color': '#3887be'
-          }
-        });
-        map.on('click', (event) => {
-          const end_coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
-          const end = {
-            type: 'FeatureCollection',
-            features: [
-              {
-                type: 'Feature',
-                properties: {},
-                geometry: {
-                  type: 'Point',
-                  coordinates: end_coords
-                }
-              }
-            ]
-          };
-          if (map.getLayer('end')) {
-            map.getSource('end').setData(end);
-          } else {
-            map.addLayer({
-              id: 'end',
-              type: 'circle',
-              source: {
-                type: 'geojson',
-                data: {
-                  type: 'FeatureCollection',
-                  features: [
-                    {
-                      type: 'Feature',
-                      properties: {},
-                      geometry: {
-                        type: 'Point',
-                        coordinates: end_coords
-                      }
+        map.loadImage('images/flogo2.jpg', (error, image) => {
+          if (error) throw error;
+          map.addImage('baby1', image);
+          map.addLayer({
+            id: 'point',
+            type: 'symbol',
+            source: {
+              type: 'geojson',
+              data: {
+                type: 'FeatureCollection',
+                features: [
+                  {
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                      type: 'Point',
+                      coordinates: start_coords
                     }
-                  ]
-                }
-              },
-              paint: {
-                'circle-radius': 10,
-                'circle-color': '#f30'
+                  }
+                ]
               }
-            });
-          }
-          getRoute(map, start_coords, end_coords);
+            },
+            layout: {
+              'icon-image': 'baby1',
+              'icon-size': 0.1
+            },
+            paint: {}
+          });
         });
-      })
+      });
+      map.on('click', (event) => {
+        const end_coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
+        const end = {
+          type: 'FeatureCollection',
+          features: [
+            {
+              type: 'Feature',
+              properties: {},
+              geometry: {
+                type: 'Point',
+                coordinates: end_coords
+              }
+            }
+          ]
+        };
+        if (map.getLayer('end')) {
+          map.getSource('end').setData(end);
+        } else {
+          map.addLayer({
+            id: 'end',
+            type: 'circle',
+            source: {
+              type: 'geojson',
+              data: {
+                type: 'FeatureCollection',
+                features: [
+                  {
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                      type: 'Point',
+                      coordinates: end_coords
+                    }
+                  }
+                ]
+              }
+            },
+            paint: {
+              'circle-radius': 10,
+              'circle-color': '#f30'
+            }
+          });
+        }
+        getRoute(map, start_coords, end_coords);
+      });
     }
 
   </script>
