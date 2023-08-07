@@ -10,7 +10,6 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
   <link rel="stylesheet" href="css/base.css">
-  <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
     integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
@@ -30,10 +29,6 @@
       </div>
       <div>
         <i class="material-symbols-outlined">notifications</i>
-        <a href="cart.html" style="position: relative; display: flex; align-items: center;">
-          <i class="material-symbols-outlined">shopping_cart</i>
-          <small class="cart_counter">0</small>
-        </a>
       </div>
     </nav>
 
@@ -53,39 +48,64 @@
       </section>
       <button class="material-symbols-outlined" onclick="closePanel()">close</button>
     </nav>
-    <section class="intro_box">
+
+    <section class="head_box">
+      <strong>
+        Ready, Set Lunch
+      </strong>
+      <button>Order Now</button>
+    </section>
+
+    <style>
+      .head_box{
+        width: 90%;
+        min-height: 18vh;
+        padding: 2vh 5%;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-direction: column;
+        background: whitesmoke;
+        background-image: url(images/burger-with-flying-elements_147620-1942.avif);
+        border: 3px solid whitesmoke;
+      }
+      .head_box strong{
+        font-size: 2rem;
+        width: 200px;
+      }
+      .head_box button{
+        padding: 10px 15px;
+        border-radius: 5px;
+        background: var(--var-theme);
+        color: white;
+      }
+    </style>
+
+    <!-- <section class="intro_box">
       <div>
         <h4>Hungry ?</h4>
         <span style="color: rgb(118, 118, 118);">Select a vendor </span>
       </div>
-    </section>
+    </section> -->
+
+    
     <section class="search_box">
       <input type="text" oninput="runVendorSearch(event.target.value.toLowerCase())">
       <i class="fa-solid fa-sliders"></i>
     </section>
-    <section class="category_box swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="category">
-            <img src="images/beverage.png" alt="">
-            <span>Beverages</span>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="category">
-            <img src="images/baby1.png" alt="">
-            <span>Foods</span>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="category">
-            <img src="images/baby3.png" alt="">
-            <span>Meat</span>
-          </div>
-        </div>
-      </div>
+    
+    <section class="meal_box">
+      <div class="meal">
+        <img src="images/burger.png" alt="">
+        <p>
+          <span>Ham Burger</span>
+          <span style="font-size: 0.8rem; color: rgb(250, 234, 205);">GHS 45.00</span>
+          <small><i class="material-symbols-outlined">star</i> 4.5</small>
+        </p>
       </div>
     </section>
+
     <section class="vendor_box">
       <h4 style="font-weight: 400; font-size: 1.3rem;">Select A Vendor</h4>
       <section class="vendors swiper">
@@ -110,15 +130,59 @@
           </div>
         </div>
       </section>
+
+      <button class="material-symbols-outlined prev">chevron_left</button>
+      <button class="material-symbols-outlined next">chevron_right</button>
     </section>
-    <section class="meal_box">
-      <div class="meal">
-        <img src="images/burger.png" alt="">
-        <p>
-          <span>Ham Burger</span>
-          <span style="font-size: 0.8rem; color: rgb(250, 234, 205);">GHS 45.00</span>
-          <small><i class="material-symbols-outlined">star</i> 4.5</small>
-        </p>
+
+    <style>
+      .vendor_box{
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .vendor_box button{
+        position: absolute;
+        z-index: 100;
+        top: 53%;
+        font-weight: 600;
+        font-size: 2.5rem;
+        color: darkgray;
+        color: var(--var-theme);
+        background: transparent;
+      }
+      .vendor_box button:nth-child(3){
+        position: absolute;
+        left: -30px;
+      }
+      .vendor_box button:nth-child(4){
+        right: -30px;
+      }
+    
+    </style>
+
+    
+    <section class="category_box swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="category">
+            <img src="images/beverage.png" alt="">
+            <span>Beverages</span>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="category">
+            <img src="images/baby1.png" alt="">
+            <span>Foods</span>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="category">
+            <img src="images/baby3.png" alt="">
+            <span>Meat</span>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
     <section class="vendor_box">
@@ -143,21 +207,48 @@
               </p>
             </div>
           </div>
+          <div class="swiper-slide vendor_slide" data-name="maz foods">
+            <div class="vendor">
+              <img src="images/test_logo.png" alt="">
+              <p>
+                <span>Maz foods</span>
+                <small><i class="material-symbols-outlined">star</i> 4.3</small>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
+      <button class="material-symbols-outlined prev">chevron_left</button>
+      <button class="material-symbols-outlined next">chevron_right</button>
     </section>
   </section>
 
+  <style>
+   body{
+    overflow-x: hidden;
+   }
+   .page{
+    overflow-x: hidden;
+   }
+  </style>
 
   <script src="js/index.js"></script>
   <script src="js/vendor.js"></script>
   <script src="js/cart.js"></script>
   <script>
-    var vendors_swiper = new Swiper('.vendors', {
-      loop: true,
-      slidesPerView: 2,
-      spaceBetween: 20
+    const vendors = document.querySelectorAll('.vendors')
+    vendors.forEach((el,i)=>{
+      var vendors_swiper = new Swiper(el, {
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 20,
+        navigation : {
+          prevEl : document.querySelectorAll('.vendor_box .prev')[i],
+          nextEl : document.querySelectorAll('.vendor_box .next')[i]
+        }
+      })
     })
+
   </script>
   <script>
     const vendor_slides = document.querySelectorAll('.vendor_slide')
@@ -175,5 +266,4 @@
     }
   </script>
 </body>
-
 </html>

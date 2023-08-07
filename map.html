@@ -46,7 +46,7 @@
   <section class="page">
     <nav class="top_nav">
       <div>
-        <a href="vendors.html" class="material-symbols-outlined">arrow_back</a>
+        <a href="vendor_menu.html" class="material-symbols-outlined">arrow_back</a>
         <img src="images/omar.png" alt="" onclick="openPanel()">
         <small onclick="openPanel()">Hi Omar</small>
       </div>
@@ -105,9 +105,9 @@
       mapboxgl.accessToken = 'pk.eyJ1IjoiYWxwaGFkaW5hciIsImEiOiJjbDZteDV5aTIwN24yM2ZvZmw5MDczankxIn0.GcppD4tq-Ojc-5N4jVJ5SQ';
       const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v12',
+        style: 'mapbox://styles/mapbox/light-v11',
         center: [-1.550235367897344, 6.67723899700621], //vendor_location
-        zoom: 11
+        zoom: 14.5
       });
       const start = [-1.550235367897344, 6.67723899700621]; // vendor_location
       fixPoints(map, start)
