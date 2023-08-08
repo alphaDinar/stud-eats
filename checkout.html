@@ -10,12 +10,12 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
   <link rel="stylesheet" href="css/base.css">
-  <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
     integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="css/component.css">
+  <link rel="stylesheet" href="css/checkout.css">
   <title>Document</title>
 </head>
 
@@ -23,11 +23,11 @@
   <section class="page">
     <nav class="top_nav">
       <div>
-        <a href="cart.html" class="material-symbols-outlined">arrow_back</a>
+        <a href="map.html" class="material-symbols-outlined">arrow_back</a>
       </div>
       <div>
         <i class="material-symbols-outlined">notifications</i>
-        <a href="cart.html" style="position: relative; display: flex; align-items: center;">
+        <a style="position: relative; display: flex; align-items: center;">
           <i class="material-symbols-outlined">shopping_cart</i>
           <small class="cart_counter">0</small>
         </a>
@@ -36,212 +36,34 @@
 
     <section class="checkout_box">
       <section class="checkout_thumb swiper">
-        <div class="swiper-wrapper checkout_thumb_nest">
-          <div class="swiper-slide">
-            <div>
-              <img src="images/burger.png" alt="">
-            </div>
-          </div>
-        </div>
+        <div class="swiper-wrapper checkout_thumb_nest"></div>
       </section>
       <section class="checkout_swiper swiper">
-        <div class="swiper-wrapper checkout_swiper_nest">
-          <div class="swiper-slide">
-            <div>
-              <img src="images/burger.png" alt="">
-              <hr style="width: 80%; border-top: 2px dotted darkgray;">
-              <span>
-                <strong style="font-size: 1.3rem;">49</strong>
-                <small>pcs</small>
-              </span>
-              <hr style="width: 80%; border-top: 2px dotted darkgray;">
-              <p>
-                <span>Burger</span>
-                <small style="color: darkgray;">Chicken</small>
-                <strong>GHS 4,300</strong>
-              </p>
-            </div>
-          </div>
-        </div>
+        <div class="swiper-wrapper checkout_swiper_nest"></div>
       </section>
     </section>
 
-
-    <style>
-      .checkout_box {
-        width: 100%;
-        display: flex;
-        gap: 0 5%;
-        border-bottom: 2px solid black;
-      }
-
-      .checkout_thumb {
-        width: 25%;
-        height: 50vh;
-      }
-
-      .checkout_thumb .swiper-slide {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .checkout_thumb .swiper-slide div{
-        padding: 5px;
-        border-radius: 5px;
-        background: whitesmoke;
-      }
-
-      .checkout_thumb .swiper-slide img {
-        height: 60px;
-        width: 60px;
-        aspect-ratio: 4/3;
-        object-fit: contain;
-      }
-
-      .checkout_swiper {
-        width: 70%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .checkout_swiper .swiper-slide div {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 1rem 0;
-      }
-
-      .checkout_swiper img {
-        width: 100%;
-        height: 250px;
-        aspect-ratio: 4/3;
-        object-fit: contain;
-      }
-
-      .checkout_swiper p {
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-        flex-direction: column;
-      }
-    </style>
-
-
-
-    <section class="sum_box">
-      <nav onclick="toggleSumBox()">
-        <i class="material-symbols-outlined">expand_less</i>
-        <span style="font-size: 1.5rem;font-family: 'Alegreya Sans SC', sans-serif;" id="total_sum">GHS 0</span>
-      </nav>
-      <div>
-        <img src="images/beverage.png" alt="">
-        <img src="images/baby3.png" alt="">
-        <p>
-          <span>Subtotal...</span>
-          <strong id="sub_sum">GHS 0</strong>
-        </p>
-        <p>
-          <span>Delivery...</span>
-          <strong id="delivery_sum">GHS 15.00</strong>
-        </p>
-        <a href="checkout.html">Proceed</a>
-      </div>
+    <section class="low_nav">
+      <p>
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="cart_total"></span>
+      </p>
+      <p>
+        <span class="material-symbols-outlined">motorcycle</span>
+        <span class="delivery_box"></span>
+      </p>
+      <p>
+        <span style="background: salmon;" class="material-symbols-outlined">payments</span>
+        <span style="background: salmon;" class="total_box"></span>
+      </p>
     </section>
-
-    <style>
-      .sum_box {
-        height: 260px;
-        width: 100%;
-        position: fixed;
-        left: 0;
-        bottom: -200px;
-        background: rgb(248, 243, 233);
-        background: white;
-        transition: 0.5s ease;
-      }
-
-      .sum_box.change {
-        bottom: 0;
-      }
-
-      .sum_box.change nav i {
-        rotate: 180deg;
-      }
-
-      .sum_box nav {
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: 90%;
-        left: 0;
-        height: 50px;
-        padding: 5px 5%;
-        background: var(--var-theme);
-        color: white;
-      }
-
-      .sum_box div {
-        width: 100%;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 200px;
-        gap: 1vh 0;
-      }
-
-      .sum_box div p {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      .sum_box div a {
-        padding: 10px;
-        border-radius: 5px;
-        background: var(--var-theme);
-        color: white;
-      }
-
-      .sum_box div img {
-        width: 60px;
-        aspect-ratio: 4/3;
-        position: absolute;
-        object-fit: contain;
-        bottom: 0px;
-      }
-
-      .sum_box div img:nth-child(1) {
-        left: 0px;
-
-      }
-
-      .sum_box div img:nth-child(2) {
-        right: 0px;
-      }
-    </style>
-
-    <script>
-      const sum_box = document.querySelector('.sum_box')
-      toggleSumBox = () => {
-        sum_box.classList.toggle('change')
-      }
-    </script>
   </section>
 
   <script src="js/cart.js"></script>
-
   <script>
     const cart_box = document.querySelector('.cart_box')
-    console.log(cart_box)
-
     const checkout_thumb_nest = document.querySelector('.checkout_thumb_nest')
     const checkout_swiper_nest = document.querySelector('.checkout_swiper_nest')
-
-
 
     fixCartState = () => {
       let cart_json = restoreCartState()[0]
@@ -265,42 +87,39 @@
               <hr style="width: 80%; border-top: 2px dotted darkgray;">
               <p>
                 <span>${el.name}</span>
-                <small style="color: darkgray;">${el.feature}</small>
                 <strong>GHS ${el.quantity * el.price}</strong>
               </p>
             </div>
           </div>
         `
-
       })
     }
     fixCartState()
 
-    makeCheckoutSwipers =()=>{
-      var checkout_thumb_swiper = new Swiper('.checkout_thumb',{
-        loop : true,
-        direction : 'vertical',
-        slidesPerView : 4
+    makeCheckoutSwipers = () => {
+      var checkout_thumb_swiper = new Swiper('.checkout_thumb', {
+        loop: true,
+        direction: 'vertical',
+        slidesPerView: 4
       })
 
       var checkout_swiper = new Swiper('.checkout_swiper', {
-        loop : true,
-        speed : 500,
+        loop: true,
+        speed: 500,
+        autoplay: {
+          delay: 4000
+        },
         thumbs: {
-        swiper: checkout_thumb_swiper,
-      },
+          swiper: checkout_thumb_swiper,
+        },
       })
     }
-
     makeCheckoutSwipers()
 
-    let cart_json = restoreCartState()[0]
+    // let cart_json = restoreCartState()[0]
     const cart_lis = document.querySelectorAll('.cart_li')
-
-
-    const sub_sum = document.getElementById('sub_sum')
-    const delivery_sum = document.getElementById('delivery_sum')
-    const total_sum = document.getElementById('total_sum')
+    const delivery_sum = document.querySelector('.delivery_box')
+    const total_sum = document.querySelector('.total_box')
 
     cartSum = (cart_json) => {
       var sub_sum_val = 0
@@ -310,6 +129,7 @@
       })
       sub_sum.innerHTML = `GHS ${sub_sum_val.toLocaleString()}`
       var delivery_sum_val = 15
+      delivery_sum.innerHTML = `GHS ${15}`
       var total_sum_val = sub_sum_val + delivery_sum_val
       anime({
         targets: total_sum,
@@ -318,83 +138,11 @@
         duration: 400
       })
       total_sum.innerHTML = `GHS ${total_sum_val.toLocaleString()}`
-
       localStorage.setItem('cart_total_json', JSON.stringify({ sub_total: sub_sum_val, delivery_total: delivery_sum_val, cart_total: total_sum_val }))
     }
 
     cartSum(cart_json)
   </script>
-
-  <!-- <script>
-    // Check if the Geolocation API is supported by the browser
-    if (navigator.geolocation) {
-      // Request the current position
-      navigator.geolocation.getCurrentPosition(
-        function (position) {
-          // Retrieve the latitude and longitude
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-
-          localStorage.setItem('lat', latitude)
-          localStorage.setItem('lon', longitude)
-
-          console.log("Latitude:", latitude);
-          console.log("Longitude:", longitude);
-        },
-        function (error) {
-          console.log("Error getting location:", error.message);
-        }
-      );
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-    }
-
-    // Function to calculate the distance between two locations
-    function calculateDistance(lat1, lon1, lat2, lon2) {
-      const earthRadius = 6371; // Radius of the Earth in kilometers
-
-      // Convert latitude and longitude to radians
-      const latRad1 = degToRad(lat1);
-      const lonRad1 = degToRad(lon1);
-      const latRad2 = degToRad(lat2);
-      const lonRad2 = degToRad(lon2);
-
-      // Difference between the latitudes and longitudes
-      const latDiff = latRad2 - latRad1;
-      const lonDiff = lonRad2 - lonRad1;
-
-      // Haversine formula
-      const a = Math.sin(latDiff / 2) ** 2 +
-        Math.cos(latRad1) * Math.cos(latRad2) *
-        Math.sin(lonDiff / 2) ** 2;
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      const distance = earthRadius * c;
-
-      return distance;
-    }
-
-    // Function to convert degrees to radians
-    function degToRad(degrees) {
-      return degrees * (Math.PI / 180);
-    }
-
-  
-    // Example usage
-    const berlin = {
-      latitude: 6.686789187922504, // Latitude of Berlin
-      longitude: -1.5714454578000048// Longitude of Berlin
-    };
-
-    const paris = {
-      latitude:5.687703616428573, // Latitude of Paris
-      longitude: -0.28203338181399695// Longitude of Paris
-    };
-
-    const distance = calculateDistance(berlin.latitude, berlin.longitude, paris.latitude, paris.longitude);
-    console.log("Distance:", distance.toFixed(2), "km");
-
-  </script> -->
-
 </body>
 
 </html>

@@ -73,7 +73,7 @@
         <h4>Hungry ?</h4>
         <span style="color: rgb(118, 118, 118);">Place An Order </span>
       </div>
-      <a href="vendor_profile.html" style="display: flex; align-items: center;">
+      <a id="vendor_data" data-id="1" href="vendor_profile.html" style="display: flex; align-items: center;">
         <img src="images/flogo2.jpg" alt="">
       </a>
     </section>
@@ -116,54 +116,10 @@
               <div>
                 <span>Cheese Burger Hamburger</span>
                 <small>GHS 45.00</small>
-                <button class="add_food" data-id="1" data-name="burger"
-                data-img_url="images/sample.jpeg" data-price="45">Add To Cart</button>
+                <button class="add_food" data-id="1" data-name="burger" data-img_url="images/sample.jpeg"
+                  data-price="45">Add To Cart</button>
               </div>
             </div>
-
-            <style>
-              .food_smalls .swiper-slide{
-                /* border: 2px solid red; */
-                display: flex !important;
-                justify-content: center;
-              }
-              .food_small{
-                border-radius: 20px;
-                border: none;
-                height: 220px;
-                width: 88%;
-                position: relative;
-                padding: 10px 5%;
-                background-position: center;
-                background-size: cover;
-              }
-              .food_small div{
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                /* border-radius: 0 0 0 10px; */
-                border-radius: 0 10px 0 10px;
-                background: rgba(0, 0, 0, 0.813);
-                padding: 10px;
-                display: flex;
-                gap: 0.5rem 0;
-                flex-direction: column;
-                align-items: flex-start;
-                color: white;
-              }
-              .food_small div span{
-                max-width: 120px;
-                font-size: 0.9rem;
-              }
-              .food_small div small{
-                color: lightgray;
-              }
-              .food_small div button, .food_big div button{
-                padding: 10px 20px;
-                border-radius: 100px;
-              }
-            </style>
-
           </div>
           <div class="swiper-slide food" data-name="shrimp fried rice" data-price="60">
             <div class="food_small" style="background-image: url(images/shrimp_fried_rice.webp);">
@@ -171,7 +127,7 @@
                 <span>Shrimp Fried Rice</span>
                 <small>GHS 60.00</small>
                 <button class="add_food" data-id="2" data-name="shrimp fried rice"
-                data-img_url="images/shrimp_fried_rice.webp" data-price="60">Add To Cart</button>
+                  data-img_url="images/shrimp_fried_rice.webp" data-price="60">Add To Cart</button>
               </div>
             </div>
           </div>
@@ -187,349 +143,62 @@
             <div>
               <span>French fries</span>
               <small>GHS 30.00</small>
-              <button class="add_food" data-id="3" data-name="french fries"
-              data-img_url="images/french_fries.png" data-price="45">Add To Cart</button>
+              <button class="add_food" data-id="3" data-name="french fries" data-img_url="images/french_fries.png"
+                data-price="45">Add To Cart</button>
             </div>
-
-            <style>
-              .food_big_box{
-                margin-bottom: 3vh;
-              }
-              .food_big{
-                height: 200px;
-                padding: 10px 0;
-                background-position: center;
-                background-size: cover;
-                display: flex;
-                border-radius: 100px;
-                position: relative;
-                justify-content: flex-end;
-                align-items: flex-end;
-              }
-              .food_big div{
-                position: absolute;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                align-items: center;
-                height: 50%;
-                color: white;
-                border-radius: 0 0 100px 100px;
-                width: 100%;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.813);
-              }
-              .food_big div span{
-                font-size: 0.9rem;
-              }
-              .food_big div small{
-                color: lightgray;
-              }
-            </style>
-
           </div>
         </div>
-        
+        <div class="swiper-slide food" data-name="Wings" data-price="80">
+          <div class="food_big" style="background-image: url(images/wings.png);">
+            <div>
+              <span>Wings</span>
+              <small>GHS 80.00</small>
+              <button class="add_food" data-id="4" data-name="Wings" data-img_url="images/wings.png" data-price="80">Add
+                To Cart</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="cart_cover" onclick="toggleCart()">
-    </section>
-
-    <style>
-      .cart_cover {
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        top: -100vh;
-        left: 0;
-        display: flex;
-        z-index: 50;
-        justify-content: center;
-        transition: 0.4s ease;
-        background: rgba(0, 0, 0, 0.331);
-      }
-    </style>
+    <section class="cart_cover" onclick="toggleCart()"></section>
 
     <a href="map.html" class="cart_total"></a>
-
-    <style>
-      .cart_total {
-        position: fixed;
-        bottom: 10px;
-        right: -200px;
-        z-index: 200;
-        background: var(--var-theme);
-        background: orange;
-        color: white;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        padding: 10px 15px;
-        display: flex;
-        align-items: center;
-        gap: 0 0.5rem;
-        border-radius: 100px;
-        transition: 0.4s ease;
-      }
-      .cart_total.change{
-        right: 10px;
-      }
-    </style>
-
     <section class="cart">
-      <section class="food_lis">
-        <div class="food_li">
-          <img src="images/shrimp_fried_rice.webp" alt="">
-          <section>
-            <span>Cheese Burger Hamburger</span>
-            <small>GHS 15.50</small>
-            <nav>
-              <button class="material-symbols-outlined">remove</button>
-              <small>10</small>
-              <button class="material-symbols-outlined">add</button>
-            </nav>
-
-            <i class="material-symbols-outlined">close</i>
-          </section>
-        </div>
-
-
-
-      </section>
-      <script>
-        const cart = document.querySelector('.cart')
-        const cart_cover = document.querySelector('.cart_cover')
-        const cart_total = document.querySelector('.cart_total')
-
-        const toggleCart = () => {
-          cart.classList.toggle('change')
-          cart_cover.classList.toggle('change')
-          cart_total.classList.toggle('change')
-        }
-      </script>
-
+      <section class="food_lis"></section>
     </section>
-    <style>
-      .cart {
-        width: 90%;
-        height: 74vh;
-        overflow-y: auto;
-        left: 0;
-        padding: 3vh 5%;
-        z-index: 100;
-        position: fixed;
-        border-radius: 20px 20px 0 0;
-        bottom: -85vh;
-        background: white;
-      }
-
-      .cart.change {
-        bottom: 0;
-      }
-
-      .cart_cover.change {
-        top: 0;
-      }
-
-      .cart {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        transition: 0.5s ease;
-      }
-
-      .food_li {
-        background: white;
-        width: 100%;
-        display: flex;
-        gap: 0 1rem;
-        padding: 5px;
-        position: relative;
-        align-items: center;
-        border-radius: 10px;
-        border: 1px solid darkgray;
-      }
-
-      .food_li i {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-      }
-
-      .food_li section {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.3rem 0;
-      }
-
-      .food_li section span {
-        width: 150px;
-        font-size: 0.85rem;
-      }
-
-      .food_li small {
-        color: rgb(101, 101, 101);
-      }
-
-      .food_li nav {
-        display: flex;
-        align-items: center;
-        gap: 0 0.8rem;
-      }
-
-      .food_li button {
-        background: var(--var-theme);
-        color: white;
-        border-radius: 20px;
-      }
-
-      .food_lis {
-        width: 100%;
-        gap: 1rem 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .food_li img {
-        width: 80px;
-        height: 80px;
-        aspect-ratio: 4/3;
-        border-radius: 10px;
-        object-fit: cover;
-        object-position: center;
-      }
-    </style>
-    </style>
   </section>
 
-  
+  <style>
+    .cart_total {
+      position: fixed;
+      bottom: 10px;
+      right: -200px;
+      z-index: 400;
+      background: orange;
+      color: white;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 0 0.5rem;
+      border-radius: 100px;
+      transition: 0.4s ease;
+    }
+
+    .cart_total.change {
+      right: 10px;
+    }
+  </style>
 
   <script src="js/index.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/vendor.js"></script>
-
-  <script>
-    const food_lis = document.querySelector('.food_lis')
-
-    fixCartState = () => {
-      let cart_json = restoreCartState()[0]
-      food_lis.innerHTML = ''
-      cart_json.forEach((el, i) => {
-        food_lis.innerHTML += `
-        <div class="food_li" id="${el.id}">
-          <img src="${el.img_url}" alt="">
-          <section>
-            <span>Cheese Burger Hamburger</span>
-            <small>GHS ${el.price}</small>
-            <nav>
-              <button class="material-symbols-outlined">remove</button>
-              <small>${el.quantity}</small>
-              <button class="material-symbols-outlined">add</button>
-            </nav>
-          </section>
-          <i class="material-symbols-outlined">close</i>
-        </div>
-        `
-      })
-    }
-    fixCartState()
-
-    let cart_json = restoreCartState()[0]
-    const sub_sum = document.querySelector('.cart_total')
-
-
-    cartSum = (cart_json) => {
-      var sub_sum_val = 0
-      cart_json.forEach(el => {
-        var el_sum = el.price * el.quantity
-        sub_sum_val = sub_sum_val + el_sum
-      })
-      sub_sum.innerHTML = `GHS ${sub_sum_val.toLocaleString()} <i class="material-symbols-outlined">shopping_cart_checkout</i>`
-      localStorage.setItem('cart_total_json', JSON.stringify({ sub_total: sub_sum_val, delivery_total: 0, cart_total: sub_sum_val }))
-    }
-    cartSum(cart_json)
-
-    manageCart = () => {
-      const cart_lis = document.querySelectorAll('.food_li')
-      let cart_json = restoreCartState()[0]
-      cart_lis.forEach(li => {
-        var li_clear = li.children[2]
-        var li_rem = li.children[1].children[2].children[0]
-        var li_sum = li.children[1].children[2].children[1]
-        var li_add = li.children[1].children[2].children[2]
-
-        console.log(li_clear)
-
-        li_add.onclick = () => {
-          cart_json.forEach(el => {
-            if (li.id === el.id) {
-              el.quantity = el.quantity + 1
-              cartCounter(cart_json)
-              cartSum(cart_json)
-              li_sum.innerHTML = el.quantity
-              localStorage.setItem('cart_json', JSON.stringify(cart_json))
-            }
-          })
-        }
-        li_rem.onclick = () => {
-          cart_json.forEach(el => {
-            if (li.id === el.id) {
-              if (el.quantity === 1) {
-                cart_json.splice(cart_json.indexOf(el), 1)
-                anime({
-                  targets: li,
-                  duration: 500,
-                  translateX: [0, -100],
-                  opacity: [1, 0],
-                  easing: 'easeInOutExpo',
-                  complete: () => {
-                    li.remove()
-                  }
-                })
-              } else {
-                el.quantity = el.quantity - 1
-              }
-              cartCounter(cart_json)
-              cartSum(cart_json)
-              li_sum.innerHTML = el.quantity
-              localStorage.setItem('cart_json', JSON.stringify(cart_json))
-            }
-          })
-        }
-        li_clear.onclick = () => {
-          cart_json.forEach(el => {
-            if (li.id === el.id) {
-              cart_json.splice(cart_json.indexOf(el), 1)
-              anime({
-                targets: li,
-                duration: 500,
-                translateX: [0, -100],
-                opacity: [1, 0],
-                easing: 'easeInOutExpo',
-                complete: () => {
-                  li.remove()
-                }
-              })
-              cartCounter(cart_json)
-              cartSum(cart_json)
-              li_sum.innerHTML = el.quantity
-              localStorage.setItem('cart_json', JSON.stringify(cart_json))
-            }
-          })
-        }
-      })
-    }
-    manageCart()
-  </script>
-
   <script>
     const makeFoodSwipers = () => {
       var food_smalls_swiper = new Swiper('.food_smalls', {
         loop: true,
         speed: 500,
-        // slidesPerView: 2,
-        // spaceBetween: 15
       })
 
       var food_big_swiper = new Swiper('.food_big_box', {
@@ -585,16 +254,14 @@
   </script>
   <script>
     const add_foods = document.querySelectorAll('.add_food')
-
-    console.log(add_foods)
     const rem_foods = document.querySelectorAll('.rem_food')
-    // var cart_json = restoreCartState()[0]
-    var blackList = restoreCartState()[1]
+    
 
     addToCart = () => {
       add_foods.forEach(add_food => {
         add_food.onclick = () => {
-          console.log('me')
+          var blackList = restoreCartState()[1]
+          let cart_json = restoreCartState()[0]
           var food_id = add_food.dataset.id
           var food_name = add_food.dataset.name
           var food_feature = add_food.dataset.feature
@@ -611,7 +278,7 @@
             blackList.push(food_id)
             cart_json.push({ id: food_id, name: food_name, feature: food_feature, price: food_price, img_url: food_img_url, vendor: food_vendor, quantity: 1, extras: '' })
           }
-          localStorage.setItem('cart_json', JSON.stringify(cart_json))
+          localStorage.setItem(`cart_json${cart_id}`, JSON.stringify(cart_json))
           fixCartState()
           cartSum(cart_json)
           cartCounter(cart_json)
@@ -621,31 +288,32 @@
     }
     addToCart()
 
-    remFromCart = () => {
-      rem_foods.forEach(rem_food => {
-        rem_food.onclick = () => {
-          var food_id = rem_food.dataset.id
-          if (blackList.includes(food_id)) {
-            cart_json.forEach(el => {
-              if (food_id === el.id) {
-                if (el.quantity > 1) {
-                  console.log(el.quantity)
-                  el.quantity = el.quantity - 1
-                }
-                else {
-                  cart_json.splice(cart_json.indexOf(el), 1)
-                  blackList.splice(blackList.indexOf(String(el.id)), 1)
-                }
-              }
-            })
-          }
-          localStorage.setItem('cart_json', JSON.stringify(cart_json))
-          cartCounter(cart_json)
-        }
-      })
-    }
-    remFromCart()
+    // remFromCart = () => {
+    //   rem_foods.forEach(rem_food => {
+    //     rem_food.onclick = () => {
+    //       var food_id = rem_food.dataset.id
+    //       if (blackList.includes(food_id)) {
+    //         cart_json.forEach(el => {
+    //           if (food_id === el.id) {
+    //             if (el.quantity > 1) {
+    //               console.log(el.quantity)
+    //               el.quantity = el.quantity - 1
+    //             }
+    //             else {
+    //               cart_json.splice(cart_json.indexOf(el), 1)
+    //               blackList.splice(blackList.indexOf(String(el.id)), 1)
+    //             }
+    //           }
+    //         })
+    //       }
+    //       localStorage.setItem('cart_json', JSON.stringify(cart_json))
+    //       cartCounter(cart_json)
+    //     }
+    //   })
+    // }
+    // remFromCart()
   </script>
+
 </body>
 
 </html>

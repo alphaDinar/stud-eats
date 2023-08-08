@@ -11,7 +11,7 @@ form input {
 
 .map_box {
   width: 115%;
-  height: 84vh;
+  height: 66vh;
   overflow: hidden;
   position: relative;
 }
@@ -23,18 +23,6 @@ form input {
   flex-direction: column;
 }
 
-.map_box nav .price_box {
-  background: var(--var-theme);
-  padding: 8px 10px;
-  color: white;
-}
-
-.map_box nav .time_box {
-  padding: 8px 10px;
-  background: var(--var-theme);
-  color: white;
-  border-radius: 0 0 10px 0;
-}
 
 .map_box .cover {
   width: 100%;
@@ -61,4 +49,69 @@ form input {
 
 .map_box .cover.change i {
   display: flex;
+}
+
+.search_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+  padding: 2vh 5%;
+  height: 26vh;
+  max-height: 26vh;
+  background: white;
+  z-index: 100;
+  border-radius: 30px 30px 0 0;
+  gap: 1rem 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.search_box nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: -35px;
+}
+
+.search_box nav a,
+.search_box nav span {
+  color: white;
+  display: flex;
+  gap: 0 0.3rem;
+  padding: 5px 10px;
+  border-radius: 100px;
+  align-items: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.search_box nav span {
+  background: salmon;
+}
+
+.search_box nav a {
+  background: orange;
+}
+
+.search_box div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search_box .search_res {
+  width: 100%;
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column;
+  gap: 0.5rem 0;
+}
+
+.search_box .search_res span {
+  width: 90%;
+  padding: 8px 5%;
+  border-bottom: 1px dotted darkgray;
 }

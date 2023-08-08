@@ -17,11 +17,78 @@
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/component.css">
+  <link rel="stylesheet" href="css/vendor_menu.css">
   <link rel="stylesheet" href="css/map.css">
 </head>
 
 <body>
+  <style>
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
 
+
+  <section class="page">
+    <nav class="top_nav">
+      <div>
+        <a href="vendor_menu.html" class="material-symbols-outlined">arrow_back</a>
+        <img src="images/omar.png" alt="" onclick="openPanel()">
+        <small onclick="openPanel()">Hi Omar</small>
+      </div>
+      <div>
+        <i class="material-symbols-outlined">notifications</i>
+        <a style="position: relative; display: flex; align-items: center;" onclick="toggleCart()">
+          <i class="material-symbols-outlined">shopping_cart</i>
+          <small class="cart_counter">0</small>
+        </a>
+      </div>
+    </nav>
+
+    <section class="map_box">
+      <div id='map' style="width: 100%; height: 100%;"></div>
+      <section class="cover">
+        <i class="material-symbols-outlined">explore</i>
+      </section>
+    </section>
+
+    <section class="search_box">
+      <nav>
+        <span class="time_box">---</span>
+        <span class="delivery_box">GHS 15 <small class="material-symbols-outlined">motorcycle</small></span>
+        <a href="checkout.html" class="cart_total"> GHS 400 <small class="material-symbols-outlined"></small></a>
+      </nav>
+      <div>
+        <input type="text" placeholder="Where are you?">
+        <i class="material-symbols-outlined">my_location</i>
+      </div>
+
+      <div class="search_res">
+        <span>KNUST</span>
+        <span>Victory Towers</span>
+      </div>
+    </section>
+
+    <section class="cart_cover" onclick="toggleCart()"></section>
+
+    <section class="cart">
+      <section class="food_lis"></section>
+    </section>
+  </section>
+
+  <script src="js/cart.js"></script>
+  <script>
+    anime({
+      loop: true,
+      targets: '.map_box .cover i',
+      rotate: [360],
+      scale: [0.5, 1],
+      duration: 2000
+
+    })
+  </script>
   <script>
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -42,62 +109,7 @@
       console.log("Geolocation is not supported by this browser.");
     }
   </script>
-
-  <section class="page">
-    <nav class="top_nav">
-      <div>
-        <a href="vendor_menu.html" class="material-symbols-outlined">arrow_back</a>
-        <img src="images/omar.png" alt="" onclick="openPanel()">
-        <small onclick="openPanel()">Hi Omar</small>
-      </div>
-      <div>
-        <i class="material-symbols-outlined">notifications</i>
-        <a href="cart.html" style="position: relative; display: flex; align-items: center;">
-          <i class="material-symbols-outlined">shopping_cart</i>
-          <small class="cart_counter">0</small>
-        </a>
-      </div>
-    </nav>
-    <section class="search_box">
-      <input type="text" placeholder="Where are you?">
-      <i class="material-symbols-outlined">my_location</i>
-    </section>
-    <section class="map_box">
-      <nav>
-        <div class="price_box">GHS 450</div>
-        <div class="time_box">---</div>
-      </nav>
-      <div id='map' style="width: 100%; height: 100%;"></div>
-      <section class="cover">
-        <i class="material-symbols-outlined">explore</i>
-      </section>
-    </section>
-  </section>
-
-
-  <style>
-    .page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    
-  </style>
-
   <script>
-    anime({
-      loop: true,
-      targets: '.map_box .cover i',
-      rotate: [360],
-      scale: [0.5, 1],
-      duration: 2000
-
-    })
-  </script>
-
-  <script>
-
     const time_box = document.querySelector('.time_box')
     const map_box_cover = document.querySelector('.map_box .cover')
 
@@ -107,14 +119,12 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v11',
         center: [-1.550235367897344, 6.67723899700621], //vendor_location
-        zoom: 14.5
+        zoom: 18
       });
       const start = [-1.550235367897344, 6.67723899700621]; // vendor_location
       fixPoints(map, start)
       return map
     }
-
-    // createMap()
 
     const getRoute = (map, start, end) => {
       map_box_cover.classList.add('change')
@@ -128,8 +138,11 @@
           var hours = Math.floor(duration / 3600);
           var minutes = Math.floor((duration % 3600) / 60);
           var seconds = Math.floor((duration % 3600) % 60);
-          time_box.innerHTML = `${hours} hours, ${minutes} minutes`
-          console.log(`${hours} hours, ${minutes} minutes, ${seconds} seconds`);
+          if (hours > 0) {
+            time_box.innerHTML = `> 60 mins`
+          } else {
+            time_box.innerHTML = `${minutes} mins`
+          }
 
           //get_routes
           const route = data.geometry.coordinates;
@@ -248,8 +261,6 @@
         getRoute(map, start_coords, end_coords);
       });
     }
-
   </script>
 </body>
-
 </html>

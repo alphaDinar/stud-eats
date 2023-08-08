@@ -1,70 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="css/base.css">
+
 </head>
+
 <body>
-  <section class="page">
-    <section class="box_swiper swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="box"></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="box"></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="box"></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="box"></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="box"></div>
-        </div>
-        <div class="swiper-slide">
-          <div class="box"></div>
-        </div>
-      </div>
-    </section>
-  </section>
+  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+  <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="hover">
+  </lord-icon>
 
-  <script>
-    var box_swiper = new Swiper('.box_swiper',{
-      loop : true,
-      slidesPerView : 3,
-      spaceBetween : 20,
-      centeredSlides: true,
-    })
-  </script>
+  <lord-icon src="https://cdn.lordicon.com/jpdtnwas.json" trigger="loop"></lord-icon>
+
+  <style>
+    lord-icon{
+      width: 100px;
+      height: 100px;
+      color: skyblue !important;
+    }
+  </style>
 </body>
-</html>
 
-<style>
-  .box_swiper{
-    /* width: 50%; */
-    height: 20vh;
-    width: 650px;
-    /* width: auto; */
-    /* w */
-    /* margin: 10vh auto; */
-    border: 2px solid black;
-  }
-  .box{
-    height: 100%;
-    width: 300px;
-    background: salmon;
-  }
-  .box_swiper .swiper-slide{
-    display: flex;
-    /* justify-content: center; */
-  }
-  .box_swiper .swiper-slide .box:nth-child(1){
-    background: skyblue;
-  }
-</style>
+<script>
+  let l_icons = document.querySelectorAll('lord-icon')
+
+  l_icons.forEach((icon)=>{
+    icon.colors = "primary:darkgray,secondary:darkgray"
+  })
+</script>
+
+</html>

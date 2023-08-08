@@ -14,6 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
     integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
   <link rel="stylesheet" href="css/component.css">
   <link rel="stylesheet" href="css/vendors.css">
   <title>Document</title>
@@ -57,7 +58,7 @@
     </section>
 
     <style>
-      .head_box{
+      .head_box {
         width: 90%;
         min-height: 18vh;
         padding: 2vh 5%;
@@ -70,11 +71,13 @@
         background-image: url(images/burger-with-flying-elements_147620-1942.avif);
         border: 3px solid whitesmoke;
       }
-      .head_box strong{
+
+      .head_box strong {
         font-size: 2rem;
         width: 200px;
       }
-      .head_box button{
+
+      .head_box button {
         padding: 10px 15px;
         border-radius: 5px;
         background: var(--var-theme);
@@ -82,19 +85,11 @@
       }
     </style>
 
-    <!-- <section class="intro_box">
-      <div>
-        <h4>Hungry ?</h4>
-        <span style="color: rgb(118, 118, 118);">Select a vendor </span>
-      </div>
-    </section> -->
-
-    
     <section class="search_box">
       <input type="text" oninput="runVendorSearch(event.target.value.toLowerCase())">
       <i class="fa-solid fa-sliders"></i>
     </section>
-    
+
     <section class="meal_box">
       <div class="meal">
         <img src="images/burger.png" alt="">
@@ -136,12 +131,13 @@
     </section>
 
     <style>
-      .vendor_box{
+      .vendor_box {
         position: relative;
         display: flex;
         justify-content: center;
       }
-      .vendor_box button{
+
+      .vendor_box button {
         position: absolute;
         z-index: 100;
         top: 53%;
@@ -151,34 +147,35 @@
         color: var(--var-theme);
         background: transparent;
       }
-      .vendor_box button:nth-child(3){
+
+      .vendor_box button:nth-child(3) {
         position: absolute;
         left: -30px;
       }
-      .vendor_box button:nth-child(4){
+
+      .vendor_box button:nth-child(4) {
         right: -30px;
       }
-    
     </style>
 
-    
+
     <section class="category_box swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <div class="category">
-            <img src="images/beverage.png" alt="">
+            <img src="images/main.png" alt="">
             <span>Beverages</span>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="category">
-            <img src="images/baby1.png" alt="">
+            <img src="images/local.png" alt="">
             <span>Foods</span>
           </div>
         </div>
         <div class="swiper-slide">
           <div class="category">
-            <img src="images/baby3.png" alt="">
+            <img src="images/salad.svg" alt="">
             <span>Meat</span>
           </div>
         </div>
@@ -224,27 +221,31 @@
   </section>
 
   <style>
-   body{
-    overflow-x: hidden;
-   }
-   .page{
-    overflow-x: hidden;
-   }
+    body {
+      overflow-x: hidden;
+    }
+
+    .page {
+      overflow-x: hidden;
+    }
   </style>
 
   <script src="js/index.js"></script>
   <script src="js/vendor.js"></script>
-  <script src="js/cart.js"></script>
+  <!-- <script src="js/cart.js"></script> -->
   <script>
     const vendors = document.querySelectorAll('.vendors')
-    vendors.forEach((el,i)=>{
+    vendors.forEach((el, i) => {
       var vendors_swiper = new Swiper(el, {
         loop: true,
         slidesPerView: 2,
         spaceBetween: 20,
-        navigation : {
-          prevEl : document.querySelectorAll('.vendor_box .prev')[i],
-          nextEl : document.querySelectorAll('.vendor_box .next')[i]
+        navigation: {
+          prevEl: document.querySelectorAll('.vendor_box .prev')[i],
+          nextEl: document.querySelectorAll('.vendor_box .next')[i]
+        },
+        autoplay: {
+          delay: 4000
         }
       })
     })
@@ -265,5 +266,9 @@
 
     }
   </script>
+  <script>
+    // console.log(new URLSearchParams(window.location.search))
+  </script>
 </body>
+
 </html>
