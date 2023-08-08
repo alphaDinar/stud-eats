@@ -3,33 +3,350 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/eb75260fb3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
+  <link rel="stylesheet" href="css/base.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+  <link rel="stylesheet" href="css/component.css">
+  <link rel="stylesheet" href="css/vendors.css">
   <title>Document</title>
-
 </head>
 
 <body>
-  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
-  <lord-icon src="https://cdn.lordicon.com/lupuorrc.json" trigger="hover">
-  </lord-icon>
+  <section class="page">
+    <section class="page_cover"></section>
+    <nav class="top_nav">
+      <div onclick="openPanel()">
+        <img src="images/omar.png" alt="">
+        <small>Hi Omar</small>
+      </div>
+      <div>
+        <i class="material-symbols-outlined">notifications</i>
+      </div>
+    </nav>
 
-  <lord-icon src="https://cdn.lordicon.com/jpdtnwas.json" trigger="loop"></lord-icon>
+    <nav class="user_panel">
+      <header>
+        <img src="images/omar.png" alt="" width="80px" style="aspect-ratio: 4/3; object-fit: contain;">
+        <span>Omar</span>
+      </header>
+      <section>
+        <a href=""><i class="material-symbols-outlined">restaurant</i> <span>My Orders</span></a>
+        <a href=""><i class="material-symbols-outlined">person</i> <span>My Profile</span></a>
+        <a href=""><i class="material-symbols-outlined">pin_drop</i> <span>Delivery Adderss</span></a>
+        <a href=""><i class="material-symbols-outlined">credit_card</i> <span>Payment Methods</span></a>
+        <a href=""><i class="material-symbols-outlined">call</i> <span>Contact Us</span></a>
+        <a href=""><i class="material-symbols-outlined">settings</i> <span>Settings</span></a>
+        <a href=""><i class="material-symbols-outlined">contact_support</i><span>Helps & FAQs</span></a>
+      </section>
+      <button class="material-symbols-outlined" onclick="closePanel()">close</button>
+    </nav>
+
+    <section class="head_box">
+      <strong>
+        Ready, Set Lunch
+      </strong>
+      <button>Order Now</button>
+    </section>
+
+    <style>
+      .head_box {
+        width: 90%;
+        min-height: 18vh;
+        padding: 2vh 5%;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-direction: column;
+        background: whitesmoke;
+        background-image: url(images/burger-with-flying-elements_147620-1942.avif);
+        border: 3px solid whitesmoke;
+      }
+
+      .head_box strong {
+        font-size: 2rem;
+        width: 200px;
+      }
+
+      .head_box button {
+        padding: 10px 15px;
+        border-radius: 5px;
+        background: var(--var-theme);
+        color: white;
+      }
+    </style>
+
+    <section class="search_box">
+      <input type="text" oninput="runVendorSearch(event.target.value.toLowerCase())">
+      <i class="fa-solid fa-sliders"></i>
+    </section>
+
+    <section class="meal_box">
+      <div class="meal">
+        <img src="images/burger.png" alt="">
+        <p>
+          <span>Ham Burger</span>
+          <span style="font-size: 0.8rem; color: rgb(250, 234, 205);">GHS 45.00</span>
+          <small><i class="material-symbols-outlined">star</i> 4.5</small>
+        </p>
+      </div>
+    </section>
+
+    <section class="vendor_box">
+      <h4 style="font-weight: 400; font-size: 1.3rem;">Select A Vendor</h4>
+      <section class="vendors swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide vendor_slide" data-name="fast foods">
+            <div class="vendor">
+              <img src="images/flogo3.avif" alt="">
+              <p>
+                <span>Fast foods</span>
+                <small><i class="material-symbols-outlined">star</i> 4.5</small>
+              </p>
+            </div>
+          </div>
+          <div class="swiper-slide vendor_slide" data-name="bolt foods">
+            <div class="vendor">
+              <img src="images/flogo2.jpg" alt="">
+              <p>
+                <span>Bolt foods</span>
+                <small><i class="material-symbols-outlined">star</i> 4.3</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <button class="material-symbols-outlined prev">chevron_left</button>
+      <button class="material-symbols-outlined next">chevron_right</button>
+    </section>
+
+    <style>
+      .vendor_box {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      .vendor_box button {
+        position: absolute;
+        z-index: 100;
+        top: 53%;
+        font-weight: 600;
+        font-size: 2.5rem;
+        color: darkgray;
+        color: var(--var-theme);
+        background: transparent;
+      }
+
+      .vendor_box button:nth-child(3) {
+        position: absolute;
+        left: -30px;
+      }
+
+      .vendor_box button:nth-child(4) {
+        right: -30px;
+      }
+    </style>
+
+
+    <section class="category_box swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="category">
+            <img src="images/main.png" alt="">
+            <span>Beverages</span>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="category">
+            <img src="images/local.png" alt="">
+            <span>Foods</span>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="category">
+            <img src="images/salad.svg" alt="">
+            <span>Meat</span>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section class="vendor_box">
+      <h4 style="font-weight: 400; font-size: 1rem; color: var(--var-theme);">See all...</h4>
+      <section class="vendors swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide vendor_slide" data-name="good foods">
+            <div class="vendor">
+              <img src="images/flogo1.jpg" alt="">
+              <p>
+                <span>Fast foods</span>
+                <small><i class="material-symbols-outlined">star</i> 4.5</small>
+              </p>
+            </div>
+          </div>
+          <div class="swiper-slide vendor_slide" data-name="maz foods">
+            <div class="vendor">
+              <img src="images/test_logo.png" alt="">
+              <p>
+                <span>Maz foods</span>
+                <small><i class="material-symbols-outlined">star</i> 4.3</small>
+              </p>
+            </div>
+          </div>
+          <div class="swiper-slide vendor_slide" data-name="maz foods">
+            <div class="vendor">
+              <img src="images/test_logo.png" alt="">
+              <p>
+                <span>Maz foods</span>
+                <small><i class="material-symbols-outlined">star</i> 4.3</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <button class="material-symbols-outlined prev">chevron_left</button>
+      <button class="material-symbols-outlined next">chevron_right</button>
+    </section>
+
+    <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+    <section class="low_nav">
+      <nav>
+        <a href="" class="material-symbols-outlined">menu</a>
+        <a href="" class="material-symbols-outlined">notifications</a>
+      </nav>
+      <a href="" class="home_tab">
+        <lord-icon src="https://cdn.lordicon.com/slduhdil.json" trigger="loop" colors="primary:white"
+          style="width:30px;height:30px">
+        </lord-icon>
+      </a>
+      <nav>
+        <a href="" class="material-symbols-outlined">menu</a>
+        <a href="" class="material-symbols-outlined">notifications</a>
+      </nav>
+    </section>
+
+    <style>
+      .low_nav {
+        /* min-height: 8vh; */
+        width: 98%;
+        margin: 0 1%;
+        padding: 2vh 0;
+        border-radius: 20px;
+        /* padding: 0 5%; */
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        bottom: 2px;
+        left: 0;
+        background: radial-gradient(circle at center top, transparent 17%, dodgerblue 0);
+        /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        z-index: 1000;
+      }
+      .low_nav nav{
+        width: 30%;
+        padding: 0 10%;
+        display: flex;
+        justify-content: space-around;
+        /* border: 1px solid black; */
+      }
+      .low_nav nav a{
+        font-size: 1.6rem;
+        color: wheat;
+        font-weight: 600;
+      }
+      .low_nav nav:nth-child(1){
+        justify-content: flex-start;
+        gap: 0 1rem;
+      }
+      .low_nav nav:nth-child(3){
+        justify-content: flex-end;
+        gap: 0 2rem;
+      }
+
+      .low_nav .home_tab{
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        content: '+';
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--var-theme);
+        /* border: 1px solid var(--var-theme); */
+        top: -40%;
+        /* left: 50%; */
+        /* margin: auto; */
+        border-radius: 50%;
+
+      }
+    </style>
+
+  </section>
 
   <style>
-    lord-icon{
-      width: 100px;
-      height: 100px;
-      color: skyblue !important;
+    body {
+      overflow-x: hidden;
+    }
+
+    .page {
+      overflow-x: hidden;
+      padding-bottom: 8vh;
     }
   </style>
+
+  <script src="js/index.js"></script>
+  <script src="js/vendor.js"></script>
+  <!-- <script src="js/cart.js"></script> -->
+  <script>
+    const vendors = document.querySelectorAll('.vendors')
+    vendors.forEach((el, i) => {
+      var vendors_swiper = new Swiper(el, {
+        loop: true,
+        slidesPerView: 2,
+        spaceBetween: 20,
+        navigation: {
+          prevEl: document.querySelectorAll('.vendor_box .prev')[i],
+          nextEl: document.querySelectorAll('.vendor_box .next')[i]
+        },
+        autoplay: {
+          delay: 4000
+        }
+      })
+    })
+
+  </script>
+  <script>
+    const vendor_slides = document.querySelectorAll('.vendor_slide')
+
+    const runVendorSearch = (val) => {
+      vendor_slides.forEach(slide => {
+        if (slide.dataset.name.includes(val)) {
+          slide.style.display = 'block'
+        } else {
+          slide.style.display = 'none'
+        }
+        runSearchAnime(slide)
+      })
+
+    }
+  </script>
+  <script>
+    // console.log(new URLSearchParams(window.location.search))
+  </script>
 </body>
-
-<script>
-  let l_icons = document.querySelectorAll('lord-icon')
-
-  l_icons.forEach((icon)=>{
-    icon.colors = "primary:darkgray,secondary:darkgray"
-  })
-</script>
 
 </html>
