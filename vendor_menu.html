@@ -63,7 +63,6 @@
           <input type="number" placeholder="min GHS" id="min" min="0" oninput="setBudget()">
           <input type="number" placeholder="max GHS" id="max" min="0" oninput="setBudget()">
         </div>
-        <small style="color: white;" id="b_res_box">0 Results</small>
       </div>
       <button class="material-symbols-outlined" onclick="closeFilter()">close</button>
     </nav>
@@ -86,19 +85,19 @@
     <section class="category_box swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <div class="category">
+          <div class="category" data-name="main food">
             <img src="images/beverage.png" alt="">
-            <span>Beverages</span>
+            <span>Main Foods</span>
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="category">
+          <div class="category" data-name="pizza">
             <img src="images/baby1.png" alt="">
-            <span>Foods</span>
+            <span>Pizza</span>
           </div>
         </div>
         <div class="swiper-slide">
-          <div class="category">
+          <div class="category" data-name="meat">
             <img src="images/baby3.png" alt="">
             <span>Meat</span>
           </div>
@@ -107,11 +106,17 @@
       </div>
     </section>
 
+    <section class="search_swiper_box">
+      <h3></h3>
+      <section class="search_swiper swiper"></section>
+      <span></span>
+    </section>
+
     <section class="food_small_box">
       <h3>Popular</h3>
       <section class="food_smalls swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide food" data-name="burger" data-price="45">
+          <div class="swiper-slide food" data-name="burger" data-price="45" data-cat="main food">
             <div class="food_small" style="background-image: url(images/sample.jpeg);">
               <div>
                 <span>Cheese Burger Hamburger</span>
@@ -121,40 +126,20 @@
               </div>
             </div>
           </div>
-          <div class="swiper-slide food" data-name="shrimp fried rice" data-price="60">
-            <div class="food_small" style="background-image: url(images/shrimp_fried_rice.webp);">
-              <div>
-                <span>Shrimp Fried Rice</span>
-                <small>GHS 60.00</small>
-                <button class="add_food" data-id="2" data-name="shrimp fried rice"
-                  data-img_url="images/shrimp_fried_rice.webp" data-price="60">Add To Cart</button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </section>
-
+    
     <p>Top Picks</p>
     <section class="food_big_box swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide food" data-name="french fries" data-price="30">
-          <div class="food_big" style="background-image: url(images/french_fries.png);">
+        <div class="swiper-slide food" data-name="shrimp fried rice" data-price="60" data-cat="main food">
+          <div class="food_big" style="background-image: url(images/shrimp_fried_rice.webp);">
             <div>
-              <span>French fries</span>
-              <small>GHS 30.00</small>
-              <button class="add_food" data-id="3" data-name="french fries" data-img_url="images/french_fries.png"
-                data-price="45">Add To Cart</button>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide food" data-name="Wings" data-price="80">
-          <div class="food_big" style="background-image: url(images/wings.png);">
-            <div>
-              <span>Wings</span>
-              <small>GHS 80.00</small>
-              <button class="add_food" data-id="4" data-name="Wings" data-img_url="images/wings.png" data-price="80">Add
-                To Cart</button>
+              <span>Shrimp Fried Rice</span>
+              <small>GHS 60.00</small>
+              <button class="add_food" data-id="2" data-name="shrimp fried rice"
+                data-img_url="images/shrimp_fried_rice.webp" data-price="60">Add To Cart</button>
             </div>
           </div>
         </div>
@@ -169,28 +154,6 @@
     </section>
   </section>
 
-  <style>
-    .cart_total {
-      position: fixed;
-      bottom: 10px;
-      right: -200px;
-      z-index: 400;
-      background: orange;
-      color: white;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      gap: 0 0.5rem;
-      border-radius: 100px;
-      transition: 0.4s ease;
-    }
-
-    .cart_total.change {
-      right: 10px;
-    }
-  </style>
-
   <script src="js/index.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/vendor.js"></script>
@@ -203,61 +166,108 @@
 
       var food_big_swiper = new Swiper('.food_big_box', {
         loop: true,
-        speed: 1000,
+        speed: 500,
       })
+
+      return [food_smalls_swiper, food_big_swiper]
     }
     makeFoodSwipers()
   </script>
   <script>
     const foods = document.querySelectorAll('.food')
+    const categories = document.querySelectorAll('.category')
+    const search_swiper_box = document.querySelector('.search_swiper_box')
+
+    const clearSearch = () => {
+      search_swiper_box.children[0].innerHTML = ''
+      search_swiper_box.children[2].innerHTML = ''
+      if (document.querySelector('.search_swiper_nest')) {
+        document.querySelector('.search_swiper_nest').remove()
+      }
+      search_swiper_box.classList.remove('change')
+      if (document.querySelector('.search_box input').value === 0) {
+        document.querySelector('.search_box input').style.border = 'none'
+      }
+    }
+
+    const fixSearchSwiper = (res_box, res_count) => {
+      search_swiper_box.classList.add('change')
+      if (document.querySelector('.search_swiper_nest')) {
+        document.querySelector('.search_swiper_nest').remove()
+      }
+      var search_swiper_nest = document.createElement('div')
+      search_swiper_nest.classList.add('swiper-wrapper')
+      search_swiper_nest.classList.add('search_swiper_nest')
+      document.querySelector('.search_swiper').appendChild(search_swiper_nest)
+      search_swiper_nest.innerHTML = ''
+      search_swiper_box.children[0].innerHTML = 'Search Box'
+      res_box.forEach(el => {
+        el.children[0].classList.remove(el.children[0].classList[0])
+        el.children[0].classList.add('food_small')
+        search_swiper_nest.appendChild(el)
+      })
+      var search_swiper = new Swiper('.search_swiper', {})
+      addToCart(document.querySelectorAll('.add_food'), document.querySelectorAll('.rem_food'))
+      search_swiper_box.children[search_swiper_box.children.length - 1].innerHTML = `${res_count} results <i class="material-symbols-outlined" onclick="clearSearch()">close</i>`
+      if (res_count === 0) {
+        clearSearch()
+        document.querySelector('.search_box input').style.border = '2px solid salmon'
+      } else {
+        document.querySelector('.search_box input').style.border = 'none'
+      }
+    }
+
+    categories.forEach((cat, i) => {
+      cat.onclick = () => {
+        var cat_name = cat.dataset.name
+        let res_box = []
+        let res_count = 0
+        foods.forEach((food, ii) => {
+          if (cat_name === food.dataset.cat) {
+            res_box.push(food.cloneNode(true))
+            res_count += 1
+          }
+        })
+        fixSearchSwiper(res_box, res_count)
+      }
+    })
+
 
     setBudget = () => {
-      const b_res_box = document.getElementById('b_res_box')
       const min = document.getElementById('min')
       const max = document.getElementById('max')
 
       if (min.value && max.value) {
+        let res_box = []
         let res_count = 0
         foods.forEach(food => {
           var price = parseInt(food.dataset.price)
           if (price > min.value && price <= max.value) {
+            res_box.push(food.cloneNode(true))
             res_count += 1
-            food.style.display = 'block'
-          } else {
-            food.style.display = 'none'
           }
-          b_res_box.innerHTML = `${res_count} Results`
-          runSearchAnime(food)
         })
-        makeFoodSwipers()
-      } else {
-        foods.forEach(food => {
-          food.style.display = 'block'
-        })
-        b_res_box.innerHTML = `${foods.length} Results`
-        makeFoodSwipers()
-      }
+        fixSearchSwiper(res_box, res_count)
+      } 
     }
     setBudget()
 
     runFoodSearch = (val) => {
+      let res_box = []
+      let res_count = 0
       foods.forEach(food => {
-        if (food.dataset.name.replace(/\s/g, "").includes(val) || food.dataset.feature.includes(val)) {
-          food.style.display = 'block'
-        } else {
-          food.style.display = 'none'
+        if (val.length > 0) {
+          if (food.dataset.name.replace(/\s/g, "").includes(val) || food.dataset.cat.includes(val)) {
+            res_box.push(food.cloneNode(true))
+            res_count += 1
+          }
         }
-        runSearchAnime(food)
       })
-      makeFoodSwipers()
+      fixSearchSwiper(res_box, res_count)
     }
   </script>
   <script>
-    const add_foods = document.querySelectorAll('.add_food')
-    const rem_foods = document.querySelectorAll('.rem_food')
-    
-
-    addToCart = () => {
+    addToCart = (add_foods, rem_foods) => {
       add_foods.forEach(add_food => {
         add_food.onclick = () => {
           var blackList = restoreCartState()[1]
@@ -286,34 +296,8 @@
         }
       })
     }
-    addToCart()
-
-    // remFromCart = () => {
-    //   rem_foods.forEach(rem_food => {
-    //     rem_food.onclick = () => {
-    //       var food_id = rem_food.dataset.id
-    //       if (blackList.includes(food_id)) {
-    //         cart_json.forEach(el => {
-    //           if (food_id === el.id) {
-    //             if (el.quantity > 1) {
-    //               console.log(el.quantity)
-    //               el.quantity = el.quantity - 1
-    //             }
-    //             else {
-    //               cart_json.splice(cart_json.indexOf(el), 1)
-    //               blackList.splice(blackList.indexOf(String(el.id)), 1)
-    //             }
-    //           }
-    //         })
-    //       }
-    //       localStorage.setItem('cart_json', JSON.stringify(cart_json))
-    //       cartCounter(cart_json)
-    //     }
-    //   })
-    // }
-    // remFromCart()
+    addToCart(document.querySelectorAll('.add_food'), document.querySelectorAll('.rem_food'))
   </script>
-
 </body>
 
 </html>

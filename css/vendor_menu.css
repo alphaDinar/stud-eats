@@ -9,21 +9,26 @@
 
 .food_smalls {
   display: flex;
+  justify-content: center;
   width: 100%;
 }
 
+/* .food_smalls .swiper-wrapper{
+  gap: 1rem;
+} */
+
 .food_smalls .swiper-slide {
-  display: flex !important;
-  justify-content: center;
+  width: 98% !important;
+  padding: 0 1% !important;
 }
 
 .food_small {
   border-radius: 20px;
   border: none;
   height: 220px;
-  width: 88%;
   position: relative;
-  padding: 10px 5%;
+  display: flex;
+  justify-content: center;
   background-position: center;
   background-size: cover;
 }
@@ -94,6 +99,46 @@
 
 .food_big div small {
   color: lightgray;
+}
+
+.search_swiper_box {
+  width: 100%;
+  height: 0vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1rem;
+  transition: 0.4s ease;
+
+  border-bottom: 1px solid transparent;
+}
+
+.search_swiper_box .swiper {
+  width: 100%;
+}
+
+.search_swiper_box .swiper-slide {
+  width: 98% !important;
+  padding: 0 1% !important;
+}
+
+.search_swiper_box.change {
+  height: 300px;
+  border-bottom: 1px solid darkgray;
+}
+
+.search_swiper_box i {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: var(--var-theme);
 }
 
 .cart {
@@ -199,4 +244,22 @@
   transition: 0.4s ease;
   background: rgba(0, 0, 0, 0.331);
 }
+.cart_total {
+  position: fixed;
+  bottom: 10px;
+  right: -200px;
+  z-index: 400;
+  background: orange;
+  color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+  border-radius: 100px;
+  transition: 0.4s ease;
+}
 
+.cart_total.change {
+  right: 10px;
+}
