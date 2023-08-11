@@ -171,7 +171,7 @@
 
 .food_li {
   background: white;
-  width: 100%;
+  width: calc(100% - 5px);
   display: flex;
   gap: 0 1rem;
   padding: 5px;

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/eb75260fb3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
+  <link rel="stylesheet" href="css/base.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+  <link rel="stylesheet" href="css/component.css">
+  <link rel="stylesheet" href="css/vendors.css">
+  <link rel="stylesheet" href="css/vendor_menu.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="page">
+    <section class="page_cover"></section>
+    <nav class="top_nav">
+      <div onclick="openPanel()">
+        <a href="orders.html" class="material-symbols-outlined">arrow_back</a>
+        <img src="images/omar.png" alt="">
+        <small>Hi Omar</small>
+      </div>
+      <div>
+        <i class="material-symbols-outlined">notifications</i>
+      </div>
+    </nav>
+
+    <nav class="user_panel">
+      <header>
+
+        <img src="images/omar.png" alt="" width="80px" style="aspect-ratio: 4/3; object-fit: contain;">
+        <span>Omar</span>
+      </header>
+      <section>
+        <a href=""><i class="material-symbols-outlined">restaurant</i> <span>My Orders</span></a>
+        <a href=""><i class="material-symbols-outlined">person</i> <span>My Profile</span></a>
+        <a href=""><i class="material-symbols-outlined">pin_drop</i> <span>Delivery Adderss</span></a>
+        <a href=""><i class="material-symbols-outlined">credit_card</i> <span>Payment Methods</span></a>
+        <a href=""><i class="material-symbols-outlined">call</i> <span>Contact Us</span></a>
+        <a href=""><i class="material-symbols-outlined">settings</i> <span>Settings</span></a>
+        <a href=""><i class="material-symbols-outlined">contact_support</i><span>Helps & FAQs</span></a>
+      </section>
+      <button class="material-symbols-outlined" onclick="closePanel()">close</button>
+    </nav>
+
+    <section class="vendor_info">
+      <img src="images/flogo1.jpg" id="vendor_logo">
+      <section class="order_info">
+        <span>
+          <i class="material-symbols-outlined">receipt_long</i>
+          <small>GHS 650</small>
+        </span>
+        <span>
+          <i class="material-symbols-outlined">motorcycle</i>
+          <small>35 mins</small>
+        </span>
+        <span>
+          <i class="material-symbols-outlined">schedule</i>
+          <small>2 weeks ago</small>
+        </span>
+      </section>
+    </section>
+
+    <style>
+      #vendor_logo {
+        width: 120px;
+        aspect-ratio: 4/3;
+        object-fit: contain;
+      }
+
+      .vendor_info {
+        display: flex;
+        margin: 1vh 0;
+        align-items: center;
+      }
+
+      .order_info {
+        padding: 0 1rem;
+        display: flex;
+        gap: 0.5rem 0;
+        flex-direction: column;
+        border-left: 1px solid darkgray;
+      }
+
+      .order_info span {
+        display: flex;
+        align-items: center;
+        gap: 0 0.5rem;
+        padding: 3px 10px;
+        text-align: center;
+        color: white;
+        border-radius: 100px;
+        background: orange;
+      }
+    </style>
+
+
+
+
+    <section class="order_list">
+      <section class="food_lis">
+        <div class="food_li" id="${el.id}">
+          <img src="images/shrimp_fried_rice.webp" alt="">
+          <section>
+            <span>Shrimp Fried Rice</span>
+            <small>GHS 65</small>
+          </section>
+        </div>
+      </section>
+    </section>
+
+
+    <style>
+      .order_list {
+        width: 100%;
+        padding: 3vh 0;
+      }
+    </style>
+
+
+  </section>
+  <script src="js/index.js"></script>
+
+  <script>
+    document.querySelectorAll('.order_info span').forEach((el, i) => {
+      anime({
+        targets: el,
+        translateY: [-50, 0],
+        opacity: [0, 1],
+        delay: 300 * i
+      })
+    })
+
+    const foods = document.querySelectorAll('.food_li')
+    foods.forEach((el, i) => {
+      anime({
+        targets: el,
+        scale : [0.7,1],
+        // translateX: [-100, 0],
+        opacity: [0, 1],
+        delay: 50 * i
+      })
+    })
+  </script>
+
+</body>
+
+</html>

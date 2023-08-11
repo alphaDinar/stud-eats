@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/eb75260fb3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
+  <link rel="stylesheet" href="css/base.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
+  <link rel="stylesheet" href="css/component.css">
+  <link rel="stylesheet" href="css/vendors.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="page">
+    <section class="page_cover"></section>
+    <nav class="top_nav">
+      <div onclick="openPanel()">
+        <a href="vendors.html" class="material-symbols-outlined">arrow_back</a>
+        <img src="images/omar.png" alt="">
+        <small>Hi Omar</small>
+      </div>
+      <div>
+        <i class="material-symbols-outlined">notifications</i>
+      </div>
+    </nav>
+
+    <nav class="user_panel">
+      <header>
+        <img src="images/omar.png" alt="" width="80px" style="aspect-ratio: 4/3; object-fit: contain;">
+        <span>Omar</span>
+      </header>
+      <section>
+        <a href=""><i class="material-symbols-outlined">restaurant</i> <span>My Orders</span></a>
+        <a href=""><i class="material-symbols-outlined">person</i> <span>My Profile</span></a>
+        <a href=""><i class="material-symbols-outlined">pin_drop</i> <span>Delivery Adderss</span></a>
+        <a href=""><i class="material-symbols-outlined">credit_card</i> <span>Payment Methods</span></a>
+        <a href=""><i class="material-symbols-outlined">call</i> <span>Contact Us</span></a>
+        <a href=""><i class="material-symbols-outlined">settings</i> <span>Settings</span></a>
+        <a href=""><i class="material-symbols-outlined">contact_support</i><span>Helps & FAQs</span></a>
+      </section>
+      <button class="material-symbols-outlined" onclick="closePanel()">close</button>
+    </nav>
+
+
+    <section class="order_box">
+      <h3>My Orders (10)</h3>
+      <section class="search_box">
+        <input type="text" placeholder="Search Order">
+      </section>
+      <section class="orders">
+        <a href="get_order.html" class="order">
+          <img src="images/flogo1.jpg" alt="">
+          <!-- <img src="images/shrimp_fried_rice.webp" alt=""> -->
+          <p>
+            <span>GHS 450</span>
+            <small style="color: rgb(94, 93, 93);">2 weeks ago</small>
+          </p>
+          <small id="count">2</small>
+          <button id="del" class="material-symbols-outlined">delete</button>
+        </a>
+      </section>
+      <style>
+        .order_box,
+        .orders,
+        .order p {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .order_box {
+          width: 100%;
+          gap: 1rem 0;
+          padding: 1vh 0;
+        }
+
+        .orders {
+          gap: 1rem 0;
+        }
+
+        .order {
+          width: 100%;
+          border: 1px solid lightgray;
+          border-radius: 4px;
+          align-items: center;
+          display: flex;
+          gap: 0 1rem;
+          color: black;
+          position: relative;
+        }
+
+        .order #count {
+          height: 20px;
+          top: -10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          border-radius: 50%;
+          right: -10px;
+          background: white;
+          font-size: 0.7rem;
+          background: wheat;
+          background: rgb(255, 237, 214);
+          position: absolute;
+        }
+
+        .order #del {
+          position: absolute;
+          background: transparent;
+          color: salmon;
+          right: 10px;
+        }
+
+        .order p {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .order img {
+          height: 70px;
+          object-fit: contain;
+          aspect-ratio: 4/3;
+        }
+      </style>
+    </section>
+  </section>
+  <script src="js/index.js"></script>
+
+  <script>
+    const order_lis = document.querySelectorAll('.order')
+
+    order_lis.forEach((el, i) => {
+      anime({
+        targets: el,
+        translateX: [-50, 0],
+        opacity: [0, 1],
+        delay: 50 * i
+      })
+    })
+    console.log(order_lis)
+  </script>
+
+
+</body>
+
+</html>
