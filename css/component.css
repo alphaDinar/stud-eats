@@ -241,27 +241,31 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   z-index: 1000;
 }
-.low_nav nav{
+
+.low_nav nav {
   width: 30%;
   padding: 0 10%;
   display: flex;
   justify-content: space-around;
 }
-.low_nav nav a{
+
+.low_nav nav a {
   font-size: 1.6rem;
   color: wheat;
   font-weight: 600;
 }
-.low_nav nav:nth-child(1){
+
+.low_nav nav:nth-child(1) {
   justify-content: flex-start;
   gap: 0 1rem;
 }
-.low_nav nav:nth-child(3){
+
+.low_nav nav:nth-child(3) {
   justify-content: flex-end;
   gap: 0 2rem;
 }
 
-.low_nav .home_tab{
+.low_nav .home_tab {
   position: absolute;
   height: 50px;
   width: 50px;
@@ -273,5 +277,4 @@
   background: var(--var-theme);
   top: -40%;
   border-radius: 50%;
-
 }
