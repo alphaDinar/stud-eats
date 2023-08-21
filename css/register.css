@@ -1,0 +1,107 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background: #f2eef3;
+}
+.page {
+  min-height: 90vh;
+  width: 90%;
+  padding: 5vh 5%;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+#logo {
+  width: 60%;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  padding: 5px 0;
+  border-bottom: 2px dotted darkgray;
+  border-bottom: 2px solid white;
+}
+header strong{
+  font-weight: 400;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+header small{
+  color: rgb(103, 103, 103);
+  font-size: 1rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 20px 0;
+}
+form div{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: column;
+}
+form div span{
+  color: rgb(79, 79, 79);
+  font-weight: 600;
+  font-size: 1rem;
+}
+form div input{
+  width: calc(90% - 2px);
+  height: 35px;
+  padding: 5px 5%;
+  border-radius: 5px;  
+  border: 1px solid transparent;  
+  background: #ffffff;
+}
+form button{
+  padding: 10px;
+  width: 90%;
+  margin: auto;
+  background: #043c4b;
+  border-radius: 5px;
+  color: white;
+}
+
+footer{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem 0;
+}
+footer a{
+  border: 2px solid white;
+  padding: 15px;
+  border-radius: 5px;
+  width: 15px;
+  height: 15px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+footer div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1rem;
+}
+footer hr{
+  width: 60px;
+  height: 2px;
+  background: white;
+}
+

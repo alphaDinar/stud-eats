@@ -3,208 +3,125 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/eb75260fb3.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
-  <link rel="stylesheet" href="css/base.css">
   <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
-    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="css/index.css">
+  <script src="https://kit.fontawesome.com/eb75260fb3.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/register.css">
 </head>
 
 <body>
   <section class="page">
-    <img src="images/test_logo.png" id="logo" alt="">
-    <section class="baby_box">
-      <img id="baby1" src="images/baby1.png" alt="">
-      <img src="images/baby2.png" alt="">
-      <img src="images/baby3.png" alt="">
-    </section>
-    <section class="home_box">
-      <section class="home_box_top">
-        <div class="top_swiper swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div>
-                <img src="images/burger_king.png" alt="">
-                <h3>"Flavors on Wheels: Fast and Flavorful Food Delivery!"</h3>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div>
-                <img src="images/french_fries.png" alt="">
-                <h3>"Gourmet Express: Savory Dishes, Straight to Your Table!"</h3>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div>
-                <img src="images/pizza.png" alt="">
-                <h3>"Delicious Delivered: Bringing Culinary Delights to Your Doorstep!"</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="top_page_box">
-          <button class="material-symbols-outlined">steppers</button>
-          <button class="material-symbols-outlined">steppers</button>
-          <button class="material-symbols-outlined">steppers</button>
-        </div>
+    <img src="images/logo.png" id="logo">
+    <header>
+      <strong>Welcome To StudStay</strong>
+      <small>Register to start</small>
+      <span class="err_box">Passwords do not match</span>
+    </header>
 
-      </section>
-      <section class="home_box_low">
-        <div onclick="openForm()">
-          <span>Get Started</span>
-          <i class="material-symbols-outlined">north</i>
-        </div>
-      </section>
-    </section>
+    <style>
+      header {
+        position: relative;
+      }
 
-    <section class="form_box swiper">
-      <span id="close_form" class="material-symbols-outlined" onclick="closeForm()">close</span>
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <form method="post">
-            <p>
-              <span>Welcome Back</span>
-              <small>Please Login To continue</small>
-            </p>
-            <div>
-              <i class="material-symbols-outlined">person</i>
-              <input type="text" placeholder="Username or Email" required>
-            </div>
-            <div>
-              <i class="material-symbols-outlined">lock</i>
-              <input type="password" placeholder="Password" required>
-            </div>
-            <button type="submit">Login</button>
-            <p id="redi">
-              <span>Don't have an account yet, register here.</span>
-              <i class="material-symbols-outlined">steppers</i>
-            </p>
-          </form>
-        </div>
-        <div class="swiper-slide">
-          <form action="vendors.html">
-            <p>
-              <span>Welcome,</span>
-              <small>Sign up to get started</small>
-            </p>
-            <div>
-              <i class="material-symbols-outlined">person</i>
-              <input type="text" placeholder="Username or Email" required>
-            </div>
-            <div>
-              <i class="material-symbols-outlined">person</i>
-              <input type="text" placeholder="Contact" required>
-            </div>
-            <div>
-              <i class="material-symbols-outlined">lock</i>
-              <input type="password" placeholder="Set password" required>
-            </div>
-            <div>
-              <i class="material-symbols-outlined">lock</i>
-              <input type="password" placeholder="Confirm password" required>
-            </div>
-            <button type="submit">Login</button>
-            <p id="redi">
-              <span>Already have an account, login here.</span>
-              <i class="material-symbols-outlined">steppers</i>
-            </p>
-          </form>
-        </div>
+      header span {
+        font-size: 0.8rem;
+        color: salmon;
+        padding: 3px 5px;
+        border-radius: 3px;
+        background: rgb(250, 227, 224);
+        transition: 0.3s ease;
+        position: absolute;
+        opacity: 0;
+        top: 80%;
+      }
+
+      header span.change {
+        top: 105%;
+        opacity: 1;
+      }
+    </style>
+
+
+
+    <form method="post">
+      <div>
+        <input type="text" name="name" required placeholder="Enter Name">
       </div>
-    </section>
+      <div>
+        <input type="email" name="email" required placeholder="E-mail">
+      </div>
+      <div>
+        <input type="tel" name="contact" required placeholder="Contact">
+      </div>
+      <div>
+        <input type="password" name="password" required placeholder="Password">
+      </div>
+      <div>
+        <input type="password" name="c_password" required placeholder="Confirm Password">
+      </div>
+      <button>Register</button>
+    </form>
+    <footer>
+      <div>
+        <hr>
+        <small>or continue with</small>
+        <hr>
+      </div>
+      <div>
+        <a href="" class="fa-brands fa-google"></a>
+        <a href="" class="fa-brands fa-facebook-f"></a>
+      </div>
+    </footer>
+
+    <a href="login.html" style="color: #043c4b;">
+      <small>Do you already have an account?</small>
+    </a>
   </section>
 
-  <script>
-    anime({
-      loop: true,
-      targets: document.querySelector('.home_box_low i'),
-      scale: [0, 1],
-      duration: 1000,
-    })
-  </script>
-  <script>
-    const babies = document.querySelectorAll('.baby_box img')
-    const runBabyAnime = () => {
-      babies.forEach((el, i) => {
-        anime({
-          targets: el,
-          scale: [0.2, 1],
-          duration: 1000,
-          opacity: [0, 1],
-          translateY: [-50, 0],
-          delay: i * 100
-        })
-      })
-    }
 
-    runBabyAnime()
-    setInterval(() => {
-      runBabyAnime()
-    }, 10000)
+  <script>
+    const passwords = document.querySelectorAll('input[type="password"]')
+    const register = document.querySelector('button')
+    const err_box = document.querySelector('.err_box')
+    const register_form = document.querySelector('form')
 
-    var top_swiper = new Swiper('.top_swiper', {
-      loop: true,
-      speed: 1500,
-      autoplay: {
-        delay: 5000
+    passwords.forEach((el) => {
+      el.oninput = () => {
+        if (passwords[0].value.length < 4) {
+          passwords[0].style.border = '1px solid salmon'
+        } else {
+          passwords[0].style.border = '1px solid springgreen'
+          if (passwords[0].value != passwords[1].value) {
+            passwords[1].style.border = '1px solid salmon'
+          } else {
+            passwords[1].style.border = '1px solid springgreen'
+          }
+        }
       }
     })
 
-    const top_swiper_pages = document.querySelectorAll('.top_page_box button')
-
-    top_swiper_pages.forEach((el, i) => {
-      el.onclick = () => {
-        top_swiper.slideTo(i)
+    register.onclick = () => {
+      if (passwords[0].value.length > 3) {
+        if (passwords[0].value != passwords[1].value) {
+          passwords[1].style.border = '1px solid salmon'
+          err_box.innerHTML = 'passwords do not match'
+          err_box.classList.add('change')
+        } else {
+          err_box.classList.remove('change')
+          passwords[1].style.border = '1px solid springgreen'
+          if (register_form.checkValidity()) {
+            register_form.submit()
+          }
+        }
+      } else {
+        err_box.innerHTML = 'password not strong enough'
+        err_box.classList.add('change')
       }
-    })
-
-
-    top_swiper_pages.forEach((el, i) => {
-      anime({
-        targets: el,
-        translateY: [200, 0],
-        duration: 800,
-        delay: 100 * i,
-        opacity: [0, 1],
-        easing: 'easeInOutExpo'
-      })
-    })
-  </script>
-  <script>
-    const home_box = document.querySelector('.home_box')
-    const form_box = document.querySelector('.form_box')
-
-    const openForm = () => {
-      form_box.classList.add('change')
-      home_box.classList.add('change')
-      top_swiper.autoplay.stop()
     }
-    const closeForm = () => {
-      form_box.classList.remove('change')
-      home_box.classList.remove('change')
-      top_swiper.autoplay.start()
-    }
+
   </script>
 
-
-  <script>
-    var form_swiper = new Swiper('.form_box', {
-      loop: false,
-      speed: 1000,
-      navigation: {
-        nextEl: document.querySelectorAll('#redi')[0],
-        prevEl: document.querySelectorAll('#redi')[1]
-      }
-    })
-  </script>
 </body>
 
 </html>
