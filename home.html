@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,300,0,0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+  <section class="page">
+    <header>
+      <img src="images/logo.png" alt="">
+
+      <style>
+        header img{
+          width: 100px;
+          /* border: 1px solid black; */
+        }
+      </style>
+    </header>
+
+    <nav>
+      <small>Select your choice to continue</small>
+
+      <div>
+        <hr>
+        <i class="material-symbols-outlined">stat_minus_2</i>
+        <hr>
+      </div>
+    </nav>
+
+    <style>
+      nav{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      nav div{
+        display: flex;
+      }
+      nav hr{
+        width: 70px;
+        border-top: 2px solid #043c4b;
+      }
+    </style>
+
+    <section class="catalog_box">
+      <section class="single">
+        <a class="card up" style="background: whitesmoke;">
+          <small style="color: black;">StudStay Rooms</small>
+          <img src="images/rooms.png" alt="">
+        </a>
+        <a class="card left" style="background: #b8c2f5;">
+          <small>StudStay Shops</small>
+          <img src="images/shop.png">
+        </a>
+      </section>
+
+      <section class="double">
+        <a class="card left" style="background: #7ccb89;">
+          <small>StudStay Laundry</small>
+          <img src="images/laundry2.png">
+        </a>
+      </section>
+
+      <section class="single">
+        <a class="card right" style="background: #ffc700;background: #91a1ec">
+          <small>StudStay Tour</small>
+          <img src="images/tour.png">
+        </a>
+        <a class="card up" style="background: whitesmoke;">
+          <small style="color: black;">StudStay Foods</small>
+          <img src="images/burger_king.png" alt="">
+        </a>
+      </section>
+
+      <section class="double">
+        <a class="card right" style="background: #e87f45;">
+          <small>StudStay Learn</small>
+          <img src="images/learn.png">
+        </a>
+      </section>
+    </section>
+
+
+    <script>
+      var x = 2000
+
+      document.querySelectorAll('.up').forEach((el, i) => {
+        anime({
+          targets: el,
+          opacity: [0, 1],
+          translateY: [60, 0],
+          delay: i * 100,
+          duration : x
+        })
+      })
+
+      document.querySelectorAll('.left').forEach((el, i) => {
+        anime({
+          targets: el,
+          opacity: [0, 1],
+          translateX: [60, 0],
+          delay: i * 100,
+          duration : x
+        })
+      })
+
+      document.querySelectorAll('.right').forEach((el, i) => {
+        anime({
+          targets: el,
+          opacity: [0, 1],
+          translateX: [-60, 0],
+          delay: i * 100,
+          duration : x
+        })
+      })
+    </script>
+
+    <style>
+      .page{
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .catalog_box {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        overflow-x: hidden;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .single {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .single .card {
+        width: calc(50% - 25px);
+        padding: 10px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        gap: 0.5rem 0;
+        text-align: center;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .single .card img {
+        width: 100px;
+        height: 120px;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        object-fit: contain;
+      }
+
+      .double {
+        width: 100%;
+      }
+
+      .double .card {
+        border-radius: 5px;
+        width: calc(100% - 20px);
+        height: 150px;
+        overflow: hidden;
+        display: flex;
+        font-size: 1.7rem;
+        color: white;
+        padding: 10px;
+        position: relative;
+      }
+
+      .double img {
+        position: absolute;
+        width: 200px;
+        bottom: -20px;
+        right: -40px;
+      }
+    </style>
+
+  </section>
+</body>
+
+</html>
+
+
+<style>
+  .page {
+    width: 90%;
+    min-height: 90vh;
+    padding: 5vh 5%;
+    align-items: center;
+  }
+</style>
