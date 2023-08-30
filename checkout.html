@@ -80,68 +80,48 @@
 
       <section class="low">
         <p>
-          <span>Subtotal</span>
+          <span>Total</span>
           <span class="cart_total"></span>
         </p>
-        <p>
-          <span>Delivery</span>
-          <span class="delivery_box"></span>
-        </p>
-        <p>
-          <span>Total</span>
-          <span class="total_box"></span>
-        </p>
+        <button>Pay <i class="material-symbols-outlined">trending_flat</i></button>
       </section>
     </form>
     <style>
       form{
         width: 100%;
         height: 30vh;
-        /* border: 2px solid black; */
       }
       form p{
         display: flex;
         justify-content: space-between;
       }
-    </style>
 
-    <!-- <section class="order_info">
-      <p>
-        <span class="material-symbols-outlined">shopping_cart</span>
-        <span class="cart_total"></span>
-      </p>
-      <p>
-        <span class="material-symbols-outlined">motorcycle</span>
-        <span class="delivery_box"></span>
-      </p>
-      <p>
-        <span style="background: salmon;" class="material-symbols-outlined">payments</span>
-        <span style="background: salmon;" class="total_box"></span>
-      </p>
-    </section> -->
-
-    <style>
-      .order_info{
+      .low,.low p{
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 0;
-        /* gap: 0 2rem; */
-        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
       }
-      .order_info p {
+      .low{
+        margin: 3vh 0;
+        gap: 1rem 0;
+      }
+      .low p span:nth-child(2){
+        font-size: 2rem;
+        font-weight: 600;
+        color: rgb(53, 53, 53);
+      }
+      .low button{
         display: flex;
         align-items: center;
-        gap: 0 0.4rem;
-      }
-
-      .order_info span {
-        padding: 7px 10px;
-        background: orange;
+        gap: 0 0.3rem;
+        padding: 10px;
+        background: var(--var-theme);
+        border-radius: 3px;
         color: white;
-        border-radius: 100px;
+        cursor: pointer;
+        font-size: 1.1rem;
       }
     </style>
-
   </section>
 
   <script src="js/cart.js"></script>
@@ -214,16 +194,13 @@
       })
       sub_sum.innerHTML = `GHS ${sub_sum_val.toLocaleString()}`
       var delivery_sum_val = 15
-      delivery_sum.innerHTML = `GHS ${15}`
-      var total_sum_val = sub_sum_val + delivery_sum_val
       anime({
         targets: total_sum,
         scale: [0, 1],
         opacity: [0, 1],
         duration: 400
       })
-      total_sum.innerHTML = `GHS ${total_sum_val.toLocaleString()}`
-      localStorage.setItem('cart_total_json', JSON.stringify({ sub_total: sub_sum_val, delivery_total: delivery_sum_val, cart_total: total_sum_val }))
+      localStorage.setItem('cart_total_json', JSON.stringify({ sub_total: sub_sum_val }))
     }
 
     cartSum(restoreCartState()[0])
