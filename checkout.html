@@ -46,6 +46,10 @@
     <form method="post">
       <section class="top">
         <div>
+          <input type="number" name="total" id="total" readonly>
+          <input type="text" name="orders" id="orders" readonly>
+        </div>
+        <div>
           <span>Address</span>
           <input type="text" name="address">
         </div>
@@ -83,7 +87,7 @@
           <span>Total</span>
           <span class="cart_total"></span>
         </p>
-        <button>Pay <i class="material-symbols-outlined">trending_flat</i></button>
+        <button>Proceed <i class="material-symbols-outlined">trending_flat</i></button>
       </section>
     </form>
     <style>
@@ -185,6 +189,8 @@
     const cart_lis = document.querySelectorAll('.cart_li')
     const delivery_sum = document.querySelector('.delivery_box')
     const total_sum = document.querySelector('.total_box')
+    const totalIn = document.getElementById('total')
+    const orders = document.getElementById('orders')
 
     cartSum = (cart_json) => {
       var sub_sum_val = 0
@@ -193,6 +199,8 @@
         sub_sum_val = sub_sum_val + el_sum
       })
       sub_sum.innerHTML = `GHS ${sub_sum_val.toLocaleString()}`
+      totalIn.value = sub_sum_val
+      orders.value = JSON.stringify(cart_json)
       var delivery_sum_val = 15
       anime({
         targets: total_sum,
